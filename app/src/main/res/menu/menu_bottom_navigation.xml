@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_trangchu"
+        android:icon="@drawable/ic_home"
+        android:title="Trang chủ" />
+
+    <item
+        android:id="@+id/nav_hoctap"
+        android:icon="@drawable/ic_book"
+        android:title="Học tập" />
+
+    <item
+        android:id="@+id/nav_sotay"
+        android:icon="@drawable/ic_notebook"
+        android:title="Sổ tay" />
+
+    <item
+        android:id="@+id/nav_canhan"
+        android:icon="@drawable/ic_user"
+        android:title="Cá nhân" />
+
+</menu>

@@ -15,6 +15,10 @@
             android:name=".activity_dangnhap"
             android:exported="false"/>
         <activity
+            android:name=".activity_trangchu.activity_trangchu"
+            android:exported="false"/>
+
+        <activity
             android:name=".activity_dangky"
             android:exported="true">
             <intent-filter>
