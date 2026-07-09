@@ -5,31 +5,14 @@
     android:background="@color/stork_blue_light"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <FrameLayout
-        android:id="@+id/frame_layout"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/BottomNavigation"
-        >
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="TrangChu_Fragment"
+        android:textSize="50dp"/>
 
-    </FrameLayout>
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/BottomNavigation"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
 
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:itemIconTint="@color/stork_blue"
-        app:itemTextColor="@color/stork_blue"
-        app:menu="@menu/menu_bottom_navigation"
-        app:labelVisibilityMode="labeled"
-        ></com.google.android.material.bottomnavigation.BottomNavigationView>
 
 
 

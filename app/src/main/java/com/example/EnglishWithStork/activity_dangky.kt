@@ -43,6 +43,7 @@ class activity_dangky: AppCompatActivity() {
         val ns = binding.edtngaysinh.text.toString().trim()
         val cb1 = binding.cb1.isChecked
 
+        //Xử lý radioButton giới tính
         val idgt = binding.group1.checkedRadioButtonId
         val rdbgioitinh = findViewById<RadioButton>(idgt)
         val gt = rdbgioitinh.text.toString()
