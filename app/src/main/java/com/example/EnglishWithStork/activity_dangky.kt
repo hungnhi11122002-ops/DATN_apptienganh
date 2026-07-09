@@ -41,8 +41,13 @@ class activity_dangky: AppCompatActivity() {
         val mk = binding.edtmk.text.toString().trim()
         val xnmk = binding.edtmk2.text.toString().trim()
         val ns = binding.edtngaysinh.text.toString().trim()
-        val gt = binding.group1.checkedRadioButtonId
         val cb1 = binding.cb1.isChecked
+
+        val idgt = binding.group1.checkedRadioButtonId
+        val rdbgioitinh = findViewById<RadioButton>(idgt)
+        val gt = rdbgioitinh.text.toString()
+
+
         if(tk.isEmpty())
         {
             binding.edttk.error ="Vui lòng nhập tên đăng nhập!"
@@ -70,7 +75,7 @@ class activity_dangky: AppCompatActivity() {
             binding.edtngaysinh.requestFocus()
             return
         }
-        if(gt == -1){
+        if(idgt == -1){
             Toast.makeText(this,"Vui lòng chọn giới tính!", Toast.LENGTH_SHORT).show()
             return
         }
@@ -79,6 +84,25 @@ class activity_dangky: AppCompatActivity() {
             Toast.makeText(this,"Bạn phải đồng ý với tất cả điều khoản sử dụng!", Toast.LENGTH_SHORT).show()
             return
         }
+
+        val newUser = Entity_user(
+            tendangnhap = tk,
+            matkhau = mk,
+            ngaysinh = ns,
+            gioitinh = gt
+        )
+        //Insert thông tin user vào RoomDatabase
+        lifecycleScope.launch {
+            val result = database.userDao().insertuser(newUser)
+            if(result == -1L){
+                binding.edttk.error = "Tên đăng nhập đã tồn tại!"
+                binding.edttk.requestFocus()
+
+                Toast.makeText(this@activity_dangky,"Tên đăng nhập đã tồn tại", Toast.LENGTH_SHORT).show()
+                return@launch
+            }
+        }
+
         Toast.makeText(this,"Đã tạo tài khoản thành công!", Toast.LENGTH_SHORT).show()
         xoadulieu_danhap()
     }
