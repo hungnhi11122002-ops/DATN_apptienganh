@@ -4,6 +4,5 @@ data class Topic (
     val topic_name: String,
     val description: String,
     val image_description: Int,
-    val isCompleted: Boolean,
-    val quantities: Int
+    val isCompleted: Boolean
 )

@@ -5,7 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.EnglishWithStork.R
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.EnglishWithStork.UI.TopicAdapter
 import com.example.EnglishWithStork.databinding.FragmentTrangChuBinding
 import com.example.EnglishWithStork.databinding.LayoutTrangchuBinding
 
@@ -48,6 +49,14 @@ class TrangChu : Fragment() {
             false
         )
         return binding.root
+        val listTopic =listOf(
+            Topic("Gia đình", "25 từ",,false ),
+            Topic("Nghề nghiệp", "30 từ",,false ),
+            Topic("Hoa quả", "25 từ",,false ),
+            Topic("Động vật", "25 từ",,false )
+        )
+        binding.rvItemTopic.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        binding.rvItemTopic.adapter = TopicAdapter(listTopic)
     }
 
 
