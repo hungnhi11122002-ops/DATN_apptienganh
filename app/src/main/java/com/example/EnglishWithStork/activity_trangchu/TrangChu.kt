@@ -6,9 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.EnglishWithStork.R
+import com.example.EnglishWithStork.Models.Topic
 import com.example.EnglishWithStork.UI.TopicAdapter
 import com.example.EnglishWithStork.databinding.FragmentTrangChuBinding
-import com.example.EnglishWithStork.databinding.LayoutTrangchuBinding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -50,18 +51,19 @@ class TrangChu : Fragment() {
         )
         return binding.root
         val listTopic =listOf(
-            Topic("Gia đình", "25 từ",,false ),
-            Topic("Nghề nghiệp", "30 từ",,false ),
-            Topic("Hoa quả", "25 từ",,false ),
-            Topic("Động vật", "25 từ",,false )
+            Topic("Gia đình", "25 từ",R.drawable.family,false ),
+            Topic("Nghề nghiệp", "30 từ",R.drawable.jobs,false ),
+            Topic("Hoa quả", "25 từ",R.drawable.fruits,false ),
+            Topic("Động vật", "25 từ",R.drawable.animals,false )
         )
-        binding.rvItemTopic.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        binding.rvItemTopic.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         binding.rvItemTopic.adapter = TopicAdapter(listTopic)
     }
 
 
     override fun onDestroyView() {
         super.onDestroyView()
+        binding.rvItemTopic.adapter = null
         _binding = null
     }
 
