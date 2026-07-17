@@ -53,8 +53,8 @@ class TrangChu : Fragment() {
         val listTopic =listOf(
             Topic("Gia đình", "25 từ",R.drawable.family,false ),
             Topic("Nghề nghiệp", "30 từ",R.drawable.jobs,false ),
-            Topic("Hoa quả", "25 từ",R.drawable.fruits,false ),
-            Topic("Động vật", "25 từ",R.drawable.animals,false )
+            Topic("Hoa quả", "20 từ",R.drawable.fruits,false ),
+            Topic("Động vật", "15 từ",R.drawable.animals,false )
         )
         binding.rvItemTopic.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         binding.rvItemTopic.adapter = TopicAdapter(listTopic)

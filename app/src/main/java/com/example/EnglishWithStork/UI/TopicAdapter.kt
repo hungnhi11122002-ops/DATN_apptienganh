@@ -32,9 +32,12 @@ class TopicAdapter(
         val topic = listTopic[position]
         p0.binding.tvTopicName.text = topic.topic_name
         p0.binding.tvDescription.text = topic.description
+
     }
 
-    override fun getItemCount(): Int = listTopic.size
+    override fun getItemCount(): Int {
+        return listTopic.size
+    }
 }
 
 
