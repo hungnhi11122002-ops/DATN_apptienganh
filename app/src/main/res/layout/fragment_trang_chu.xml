@@ -57,7 +57,7 @@
     ></ImageView>
 
     <EditText
-        android:id="@+id/tv3"
+        android:id="@+id/edt1"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -83,6 +83,7 @@
         app:layout_goneMarginEnd="10dp"
         app:layout_goneMarginTop="6dp"
     ></TextView>
+
 
     <ImageView
         android:id="@+id/img2"
@@ -176,11 +177,22 @@
         android:text="Chủ đề phổ biến "
         android:textSize="20sp"
         android:textStyle="bold"
-
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.018"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/img2"></TextView>
+        app:layout_constraintTop_toBottomOf="@id/img2"
+    ></TextView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_item_topic"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv5"
+        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
