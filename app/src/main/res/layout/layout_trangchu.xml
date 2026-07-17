@@ -14,7 +14,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/BottomNavigation"
         >
-
     </FrameLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -31,6 +30,18 @@
         app:menu="@menu/menu_bottom_navigation"
         app:labelVisibilityMode="labeled"
         ></com.google.android.material.bottomnavigation.BottomNavigationView>
+
+    <ImageView
+        android:id = "@+id/slogan_stork"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/slogan_stork"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        />
+
 
 
 
