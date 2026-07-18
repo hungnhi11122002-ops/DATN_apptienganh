@@ -4,11 +4,12 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.EnglishWithStork.Models.Topic
+
 import com.example.EnglishWithStork.databinding.ItemTopicsBinding
 
-class topicAdapter(
+class TopicAdapter(
     private var listTopic: List<Topic>
-) : RecyclerView.Adapter<topicAdapter.TopicViewHolder>() {
+) : RecyclerView.Adapter<TopicAdapter.TopicViewHolder>() {
     class TopicViewHolder(
         val binding: ItemTopicsBinding
     ): RecyclerView.ViewHolder(binding.root)
@@ -26,13 +27,13 @@ class topicAdapter(
     }
 
     override fun onBindViewHolder(
-        p0: TopicViewHolder,
+        holder: TopicViewHolder,
         position: Int
     ) {
         val topic = listTopic[position]
-        p0.binding.tvTopicName.text = topic.topic_name
-        p0.binding.tvDescription.text = topic.description
-        p0.binding.imgTopic.setImageResource(topic.image_description)
+        holder.binding.tvTopicName.text = topic.topic_name
+        holder.binding.tvDescription.text = topic.description
+        holder.binding.imgTopic.setImageResource(topic.image_description)
 
     }
 

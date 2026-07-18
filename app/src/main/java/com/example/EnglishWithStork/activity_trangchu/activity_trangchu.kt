@@ -14,10 +14,6 @@ class activity_trangchu: AppCompatActivity() {
 
         binding = LayoutTrangchuBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        if (savedInstanceState == null) {
-            replaceFragment(TrangChu())
-            binding.BottomNavigation.selectedItemId = R.id.nav_trangchu
-        }
 
         binding.BottomNavigation.setOnItemSelectedListener {
             when(it.itemId){
@@ -39,6 +35,10 @@ class activity_trangchu: AppCompatActivity() {
                 }
                 else -> false
             }
+        }
+        if (savedInstanceState == null) {
+            replaceFragment(TrangChu())
+            binding.BottomNavigation.menu.findItem(R.id.nav_trangchu).isChecked = true
         }
     }
 

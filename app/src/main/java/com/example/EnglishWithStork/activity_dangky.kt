@@ -102,10 +102,13 @@ class activity_dangky: AppCompatActivity() {
                 Toast.makeText(this@activity_dangky,"Tên đăng nhập đã tồn tại", Toast.LENGTH_SHORT).show()
                 return@launch
             }
+            else{
+                Toast.makeText(this@activity_dangky,"Đã tạo tài khoản thành công!", Toast.LENGTH_SHORT).show()
+                xoadulieu_danhap()
+            }
         }
 
-        Toast.makeText(this,"Đã tạo tài khoản thành công!", Toast.LENGTH_SHORT).show()
-        xoadulieu_danhap()
+
     }
 
     fun xoadulieu_danhap(){

@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.EnglishWithStork.R
 import com.example.EnglishWithStork.Models.Topic
-import com.example.EnglishWithStork.UI.topicAdapter
+import com.example.EnglishWithStork.UI.TopicAdapter
 import com.example.EnglishWithStork.databinding.FragmentTrangChuBinding
 
 class TrangChu : Fragment() {
@@ -40,12 +40,11 @@ class TrangChu : Fragment() {
             Topic("Động vật", "15 từ",R.drawable.animals,false )
         )
         binding.rvItemTopic.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-        binding.rvItemTopic.adapter = topicAdapter(listTopic)
-        binding.rvItemTopic.setHasFixedSize(true)
+        binding.rvItemTopic.adapter = TopicAdapter(listTopic)
+//        binding.rvItemTopic.setHasFixedSize(true)
     }
 
     override fun onDestroyView() {
-
         binding.rvItemTopic.adapter = null
         _binding = null
         super.onDestroyView()
