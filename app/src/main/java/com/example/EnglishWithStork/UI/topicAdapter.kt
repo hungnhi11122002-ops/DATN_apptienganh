@@ -6,9 +6,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.EnglishWithStork.Models.Topic
 import com.example.EnglishWithStork.databinding.ItemTopicsBinding
 
-class TopicAdapter(
+class topicAdapter(
     private var listTopic: List<Topic>
-) : RecyclerView.Adapter<TopicAdapter.TopicViewHolder>() {
+) : RecyclerView.Adapter<topicAdapter.TopicViewHolder>() {
     class TopicViewHolder(
         val binding: ItemTopicsBinding
     ): RecyclerView.ViewHolder(binding.root)
@@ -32,12 +32,14 @@ class TopicAdapter(
         val topic = listTopic[position]
         p0.binding.tvTopicName.text = topic.topic_name
         p0.binding.tvDescription.text = topic.description
+        p0.binding.imgTopic.setImageResource(topic.image_description)
 
     }
 
     override fun getItemCount(): Int {
         return listTopic.size
     }
+
 }
 
 

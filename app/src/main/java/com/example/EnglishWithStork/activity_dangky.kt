@@ -43,12 +43,6 @@ class activity_dangky: AppCompatActivity() {
         val ns = binding.edtngaysinh.text.toString().trim()
         val cb1 = binding.cb1.isChecked
 
-        //Xử lý radioButton giới tính
-        val idgt = binding.group1.checkedRadioButtonId
-        val rdbgioitinh = findViewById<RadioButton>(idgt)
-        val gt = rdbgioitinh.text.toString()
-
-
         if(tk.isEmpty())
         {
             binding.edttk.error ="Vui lòng nhập tên đăng nhập!"
@@ -76,10 +70,16 @@ class activity_dangky: AppCompatActivity() {
             binding.edtngaysinh.requestFocus()
             return
         }
+
+        //Xử lý radioButton giới tính
+        val idgt = binding.group1.checkedRadioButtonId
         if(idgt == -1){
             Toast.makeText(this,"Vui lòng chọn giới tính!", Toast.LENGTH_SHORT).show()
             return
         }
+        val rdbgioitinh = findViewById<RadioButton>(idgt)
+        val gt = rdbgioitinh.text.toString()
+
         if (!cb1)
         {
             Toast.makeText(this,"Bạn phải đồng ý với tất cả điều khoản sử dụng!", Toast.LENGTH_SHORT).show()

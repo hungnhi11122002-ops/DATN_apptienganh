@@ -11,10 +11,12 @@ class activity_trangchu: AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         binding = LayoutTrangchuBinding.inflate(layoutInflater)
         setContentView(binding.root)
         if (savedInstanceState == null) {
             replaceFragment(TrangChu())
+            binding.BottomNavigation.selectedItemId = R.id.nav_trangchu
         }
 
         binding.BottomNavigation.setOnItemSelectedListener {
@@ -37,10 +39,7 @@ class activity_trangchu: AppCompatActivity() {
                 }
                 else -> false
             }
-        true
         }
-
-        binding.BottomNavigation.setOnItemReselectedListener {}
     }
 
     private fun replaceFragment(fragment: Fragment){
