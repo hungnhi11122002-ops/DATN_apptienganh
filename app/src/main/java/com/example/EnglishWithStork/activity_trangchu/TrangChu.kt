@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.EnglishWithStork.R
 import com.example.EnglishWithStork.Models.Topic
+import com.example.EnglishWithStork.Models.quick_practise
 import com.example.EnglishWithStork.UI.TopicAdapter
 import com.example.EnglishWithStork.databinding.FragmentTrangChuBinding
 
@@ -41,7 +42,11 @@ class TrangChu : Fragment() {
         )
         binding.rvItemTopic.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         binding.rvItemTopic.adapter = TopicAdapter(listTopic)
-//        binding.rvItemTopic.setHasFixedSize(true)
+
+        val listquick_practise = listOf(
+            quick_practise("Từ vựng", "Học từ vựng mỗi ngày",R.drawable.ic_prac),
+            quick_practise("Kiểm tra", "Kiểm tra kiến thức",R.drawable.ic_exam)
+        )
     }
 
     override fun onDestroyView() {
