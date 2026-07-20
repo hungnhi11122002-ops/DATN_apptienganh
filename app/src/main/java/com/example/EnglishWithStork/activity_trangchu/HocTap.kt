@@ -46,17 +46,21 @@ class HocTap : Fragment() {
         binding.rvItemHoctapOptions.adapter = HocTapOptionsAdapter(listHocTapOptions)
 
         val listTopics = listOf(
+            Topic("Số đếm và phép tính", "30 từ", R.drawable.ic_tinhtoan_sodem, false),
             Topic("Gia đình", "29 từ", R.drawable.family, false),
-            Topic("Thời tiết", "40 từ", R.drawable.jobs, false),
-            Topic("Nghề nghiệp", "45 từ", R.drawable.fruits, false),
-            Topic("Quần áo", "40 từ", R.drawable.animals, false),
-            Topic("Tính cách", "20 từ", R.drawable.fruits, false),
-            Topic("Rau củ", "20 từ", R.drawable.animals, false),
-            Topic("Động vật", "25 từ", R.drawable.fruits, false),
-            Topic("Đồ ăn", "20 từ", R.drawable.animals, false),
-            Topic("Trường học", "30 từ", R.drawable.animals, false),
-            Topic("Màu sắc", "15 từ", R.drawable.animals, false),
-            Topic("Giao thông", "20 từ", R.drawable.animals, false)
+            Topic("Nghề nghiệp", "45 từ", R.drawable.jobs, false),
+            Topic("Thời tiết", "40 từ", R.drawable.ic_thoitiet1, false),
+            Topic("Quần áo", "40 từ", R.drawable.ic_clothes, false),
+            Topic("Tính cách", "20 từ", R.drawable.ic_tinhcach, false),
+            Topic("Bộ phận cơ thể", "20 từ", R.drawable.ic_bophancothe, false),
+            Topic("Ngoại hình", "20 từ", R.drawable.ic_ngoaihinh, false),
+            Topic("Cảm xúc", "20 từ", R.drawable.ic_camxuc, false),
+            Topic("Rau củ", "20 từ", R.drawable.ic_raucu, false),
+            Topic("Động vật", "40 từ", R.drawable.animals, false),
+            Topic("Đồ ăn & Đồ uống", "40 từ", R.drawable.ic_doan_douong, false),
+            Topic("Quốc gia", "20 từ", R.drawable.ic_quocgia, false),
+            Topic("Mua sắm", "20 từ", R.drawable.ic_muasam, false),
+            Topic("Sức khỏe", "20 từ", R.drawable.ic_suckhoe, false)
         )
         binding.rvTopic.apply {
             layoutManager = GridLayoutManager(
