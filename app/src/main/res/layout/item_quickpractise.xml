@@ -12,7 +12,6 @@
         android:id="@+id/imgPractise"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:contentDescription="Hình minh họa chủ đề"
         android:scaleType="centerCrop"
         android:src="@drawable/family" />
 
