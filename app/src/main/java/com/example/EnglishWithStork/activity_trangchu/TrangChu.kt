@@ -36,7 +36,7 @@ class TrangChu : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val listTopic =listOf(
-            Topic("Gia đình", "25 từ",R.drawable.family,false),
+            Topic("Gia đình", "29 từ",R.drawable.family,false),
             Topic("Nghề nghiệp", "30 từ",R.drawable.jobs,false)
         )
         binding.rvItemTopic.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
@@ -44,7 +44,8 @@ class TrangChu : Fragment() {
 
         val listTopic2 =listOf(
             Topic("Trái cây", "20 từ",R.drawable.fruits,false),
-            Topic("Động vật", "15 từ",R.drawable.animals,false)
+            Topic("Động vật", "15 từ",R.drawable.animals,false),
+
         )
         binding.rvItemTopic2.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         binding.rvItemTopic2.adapter = TopicAdapter(listTopic2)
