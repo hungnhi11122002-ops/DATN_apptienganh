@@ -105,6 +105,9 @@ class activity_dangky: AppCompatActivity() {
             else{
                 Toast.makeText(this@activity_dangky,"Đã tạo tài khoản thành công!", Toast.LENGTH_SHORT).show()
                 xoadulieu_danhap()
+                val i1 = Intent(this@activity_dangky, activity_dangnhap::class.java)
+                startActivity(i1)
+                finish()
             }
         }
 

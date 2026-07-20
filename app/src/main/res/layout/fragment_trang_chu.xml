@@ -50,7 +50,7 @@
         android:background="@drawable/bg_trang"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="10dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         app:layout_constraintTop_toBottomOf="@id/tv2"
@@ -87,13 +87,14 @@
 
     <ImageView
         android:id="@+id/img2"
-        android:layout_width="210dp"
+        android:layout_width="0dp"
         android:layout_height="200dp"
         android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
         android:layout_marginTop="12dp"
         android:background="@drawable/bg_trang"
-        app:layout_constraintEnd_toStartOf="@id/img3"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/img1"></ImageView>
 
     <TextView
@@ -103,7 +104,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="5dp"
         android:text="Tiến độ học tập"
-        android:textSize="15sp"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@id/img2"
         app:layout_constraintHorizontal_bias="0.031"
@@ -114,20 +115,22 @@
 
     <ImageView
         android:id="@+id/b1_img1"
-        android:layout_width="130dp"
-        android:layout_height="25dp"
+        android:layout_width="160dp"
+        android:layout_height="30dp"
+
+        android:layout_marginBottom="8dp"
         android:background="@drawable/bg_xanh"
-        android:layout_marginEnd="5dp"
-        android:layout_marginBottom="5dp"
         app:layout_constraintBottom_toBottomOf="@id/img2"
         app:layout_constraintEnd_toEndOf="@id/img2"
-        app:layout_constraintHorizontal_bias="0.877"
+        app:layout_constraintHorizontal_bias="0.966"
         app:layout_constraintStart_toStartOf="@id/img2"></ImageView>
 
     <TextView
         android:id="@+id/b1_btn1"
-        android:layout_width="130dp"
-        android:layout_height="25dp"
+        android:layout_width="160dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
         android:gravity="center"
         android:text="Tiếp tục học"
         android:textColor="@color/white"
@@ -137,34 +140,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@id/b1_img1"
         app:layout_constraintTop_toTopOf="@id/b1_img1"
-        app:layout_constraintVertical_bias="1.0"></TextView>
-
-    <ImageView
-        android:id="@+id/img3"
-        android:layout_width="140dp"
-        android:layout_height="200dp"
-        android:background="@drawable/bg_trang"
-        app:layout_constraintStart_toEndOf="@id/img2"
-        app:layout_constraintTop_toBottomOf="@id/img1"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="20dp"
-        ></ImageView>
-
-    <TextView
-        android:id="@+id/b2_tv1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="5dp"
-        android:text="Từ vựng hôm nay"
-        android:textSize="15sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@id/img3"
-        app:layout_constraintHorizontal_bias="0.031"
-        app:layout_constraintStart_toStartOf="@id/img3"
-        app:layout_constraintTop_toTopOf="@id/img3"
-    ></TextView>
+        app:layout_constraintVertical_bias="0.0"></TextView>
 
     <TextView
         android:id="@+id/tv5"
@@ -189,7 +165,6 @@
         android:clipToPadding="false"
         android:orientation="horizontal"
         android:layout_marginTop="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -197,6 +172,21 @@
         app:layout_constraintVertical_bias="0.0"
         tools:listitem="@layout/item_topics"
     />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_item_topic2"
+        android:layout_width="0dp"
+        android:layout_height="90dp"
+        android:clipToPadding="false"
+        android:orientation="horizontal"
+        android:layout_marginTop="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rv_item_topic"
+        app:layout_constraintVertical_bias="0.0"
+        tools:listitem="@layout/item_topics"
+        />
 
     <TextView
         android:id="@+id/tv6"
@@ -210,7 +200,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.029"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/rv_item_topic"
+        app:layout_constraintTop_toBottomOf="@id/rv_item_topic2"
     ></TextView>
 
     <androidx.recyclerview.widget.RecyclerView

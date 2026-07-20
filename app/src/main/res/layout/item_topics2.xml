@@ -15,7 +15,7 @@
         android:layout_height="60dp"
         android:contentDescription="Hình minh họa chủ đề"
         android:scaleType="centerCrop"
-        android:src="@drawable/family" />
+        android:src="@drawable/fruits" />
 
     <LinearLayout
         android:id="@+id/khung"
@@ -30,7 +30,7 @@
             android:id="@+id/tv_topic_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Gia đình"
+            android:text="Trái cây"
             android:textColor="@color/stork_blue_dark"
             android:textSize="18sp"
             android:textStyle="bold"></TextView>
