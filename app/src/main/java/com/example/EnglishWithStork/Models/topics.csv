@@ -1,0 +1,17 @@
+id,name,image_name,sort_order
+1,Số đếm và phép tính,ic_tinhtoan_sodem,1
+2,Gia đình,family,2
+3,Nghề nghiệp,jobs,3
+4,Thời tiết,ic_thoitiet1,4
+5,Quần áo,ic_clothes,5
+6,Tính cách,ic_tinhcach,6
+7,Bộ phận cơ thể,ic_bophancothe,7
+8,Ngoại hình,ic_ngoaihinh,8
+9,Cảm xúc,ic_camxuc,9
+10,Hoa quả,fruits,10
+11,Rau củ,ic_raucu,11
+12,Động vật,animals,12
+13,Đồ ăn & Đồ uống,ic_doan_douong,13
+14,Quốc gia,ic_quocgia,14
+15,Mua sắm,ic_muasam,15
+16,Sức khỏe,ic_suckhoe,16

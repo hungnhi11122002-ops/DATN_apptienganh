@@ -1,0 +1,101 @@
+id,topic_id,english,word_class,vietnamese,phonetic,example_en,example_vi,image_name,audio_name,sort_order
+1,2,family,noun,gia đình,/ˈfæməli/,,,,,1
+2,2,father,noun,"bố, cha",/ˈfɑːðə(r)/,,,,,2
+3,2,mother,noun,mẹ,/ˈmʌðə(r)/,,,,,3
+4,2,parents,noun,"bố mẹ, cha mẹ",/ˈpeərənts/,,,,,4
+5,2,son,noun,con trai,/sʌn/,,,,,5
+6,2,daughter,noun,con gái,/ˈdɔːtə(r)/,,,,,6
+7,2,brother,noun,anh/em trai,/ˈbrʌðə(r)/,,,,,7
+8,2,sister,noun,chị/em gái,/ˈsɪstə(r)/,,,,,8
+9,2,husband,noun,chồng,/ˈhʌzbənd/,,,,,9
+10,2,wife,noun,vợ,/waɪf/,,,,,10
+11,2,grandfather,noun,ông,/ˈɡrænfɑːðə(r)/,,,,,11
+12,2,grandmother,noun,bà,/ˈɡrænmʌðə(r)/,,,,,12
+13,2,grandparents,noun,ông bà,/ˈɡrænpeərənts/,,,,,13
+14,2,uncle,noun,"chú, bác, cậu",/ˈʌŋkl/,,,,,14
+15,2,aunt,noun,"cô, dì, bác gái",/ɑːnt/,,,,,15
+16,2,cousin,noun,anh/chị/em họ,/ˈkʌzn/,,,,,16
+17,2,nephew,noun,cháu trai,/ˈnefjuː/,,,,,17
+18,2,niece,noun,cháu gái,/niːs/,,,,,18
+19,2,baby,noun,em bé,/ˈbeɪbi/,,,,,19
+20,2,child,noun,"đứa trẻ, con",/tʃaɪld/,,,,,20
+21,2,children,noun,"trẻ em, các con",/ˈtʃɪldrən/,,,,,21
+22,2,grandson,noun,cháu trai,/ˈɡrænsʌn/,,,,,22
+23,2,granddaughter,noun,cháu gái,/ˈɡrændɔːtə(r)/,,,,,23
+24,2,relative,noun,"họ hàng, người thân",/ˈrelətɪv/,,,,,24
+25,2,twins,noun,cặp song sinh,/twɪnz/,,,,,25
+26,3,doctor,noun,bác sĩ,/ˈdɒktə(r)/,,,,,1
+27,3,nurse,noun,"y tá, điều dưỡng",/nɜːs/,,,,,2
+28,3,teacher,noun,giáo viên,/ˈtiːtʃə(r)/,,,,,3
+29,3,engineer,noun,kỹ sư,/ˌendʒɪˈnɪə(r)/,,,,,4
+30,3,farmer,noun,nông dân,/ˈfɑːmə(r)/,,,,,5
+31,3,driver,noun,tài xế,/ˈdraɪvə(r)/,,,,,6
+32,3,police officer,noun,cảnh sát,/pəˈliːs ˌɒfɪsə(r)/,,,,,7
+33,3,firefighter,noun,lính cứu hỏa,/ˈfaɪəfaɪtə(r)/,,,,,8
+34,3,chef,noun,"bếp trưởng, đầu bếp chuyên nghiệp",/ʃef/,,,,,9
+35,3,cook,noun,đầu bếp,/kʊk/,,,,,10
+36,3,waiter,noun,nhân viên phục vụ nam,/ˈweɪtə(r)/,,,,,11
+37,3,waitress,noun,nhân viên phục vụ nữ,/ˈweɪtrəs/,,,,,12
+38,3,dentist,noun,nha sĩ,/ˈdentɪst/,,,,,13
+39,3,pilot,noun,phi công,/ˈpaɪlət/,,,,,14
+40,3,soldier,noun,binh sĩ,/ˈsəʊldʒə(r)/,,,,,15
+41,3,lawyer,noun,luật sư,/ˈlɔɪə(r)/,,,,,16
+42,3,artist,noun,"họa sĩ, nghệ sĩ",/ˈɑːtɪst/,,,,,17
+43,3,singer,noun,ca sĩ,/ˈsɪŋə(r)/,,,,,18
+44,3,actor,noun,diễn viên nam,/ˈæktə(r)/,,,,,19
+45,3,actress,noun,diễn viên nữ,/ˈæktrəs/,,,,,20
+46,3,writer,noun,"nhà văn, người viết",/ˈraɪtə(r)/,,,,,21
+47,3,mechanic,noun,"thợ cơ khí, thợ sửa máy",/məˈkænɪk/,,,,,22
+48,3,electrician,noun,thợ điện,/ɪˌlekˈtrɪʃn/,,,,,23
+49,3,shop assistant,noun,nhân viên bán hàng,/ˈʃɒp əsɪstənt/,,,,,24
+50,3,accountant,noun,kế toán,/əˈkaʊntənt/,,,,,25
+51,10,apple,noun,quả táo,/ˈæpl/,,,,,1
+52,10,banana,noun,quả chuối,/bəˈnɑːnə/,,,,,2
+53,10,orange,noun,quả cam,/ˈɒrɪndʒ/,,,,,3
+54,10,mango,noun,quả xoài,/ˈmæŋɡəʊ/,,,,,4
+55,10,grape,noun,quả nho,/ɡreɪp/,,,,,5
+56,10,watermelon,noun,dưa hấu,/ˈwɔːtəmelən/,,,,,6
+57,10,pineapple,noun,"quả dứa, quả thơm",/ˈpaɪnæpl/,,,,,7
+58,10,strawberry,noun,dâu tây,/ˈstrɔːbəri/,,,,,8
+59,10,blueberry,noun,việt quất,/ˈbluːbəri/,,,,,9
+60,10,raspberry,noun,quả mâm xôi,/ˈrɑːzbəri/,,,,,10
+61,10,cherry,noun,quả anh đào,/ˈtʃeri/,,,,,11
+62,10,peach,noun,quả đào,/piːtʃ/,,,,,12
+63,10,pear,noun,quả lê,/peə(r)/,,,,,13
+64,10,lemon,noun,quả chanh vàng,/ˈlemən/,,,,,14
+65,10,lime,noun,quả chanh xanh,/laɪm/,,,,,15
+66,10,coconut,noun,quả dừa,/ˈkəʊkənʌt/,,,,,16
+67,10,papaya,noun,quả đu đủ,/pəˈpaɪə/,,,,,17
+68,10,guava,noun,quả ổi,/ˈɡwɑːvə/,,,,,18
+69,10,kiwi,noun,quả kiwi,/ˈkiːwiː/,,,,,19
+70,10,plum,noun,quả mận,/plʌm/,,,,,20
+71,10,melon,noun,dưa,/ˈmelən/,,,,,21
+72,10,avocado,noun,quả bơ,/ˌævəˈkɑːdəʊ/,,,,,22
+73,10,pomegranate,noun,quả lựu,/ˈpɒmɪɡrænɪt/,,,,,23
+74,10,grapefruit,noun,quả bưởi chùm,/ˈɡreɪpfruːt/,,,,,24
+75,10,dragon fruit,noun,quả thanh long,/ˈdræɡən fruːt/,,,,,25
+76,12,dog,noun,con chó,/dɒɡ/,,,,,1
+77,12,cat,noun,con mèo,/kæt/,,,,,2
+78,12,bird,noun,con chim,/bɜːd/,,,,,3
+79,12,fish,noun,con cá,/fɪʃ/,,,,,4
+80,12,horse,noun,con ngựa,/hɔːs/,,,,,5
+81,12,cow,noun,con bò,/kaʊ/,,,,,6
+82,12,pig,noun,"con lợn, con heo",/pɪɡ/,,,,,7
+83,12,chicken,noun,con gà,/ˈtʃɪkɪn/,,,,,8
+84,12,duck,noun,con vịt,/dʌk/,,,,,9
+85,12,sheep,noun,con cừu,/ʃiːp/,,,,,10
+86,12,goat,noun,con dê,/ɡəʊt/,,,,,11
+87,12,rabbit,noun,con thỏ,/ˈræbɪt/,,,,,12
+88,12,mouse,noun,con chuột,/maʊs/,,,,,13
+89,12,lion,noun,sư tử,/ˈlaɪən/,,,,,14
+90,12,tiger,noun,hổ,/ˈtaɪɡə(r)/,,,,,15
+91,12,elephant,noun,voi,/ˈelɪfənt/,,,,,16
+92,12,monkey,noun,khỉ,/ˈmʌŋki/,,,,,17
+93,12,bear,noun,gấu,/beə(r)/,,,,,18
+94,12,giraffe,noun,hươu cao cổ,/dʒəˈrɑːf/,,,,,19
+95,12,zebra,noun,ngựa vằn,/ˈzebrə/,,,,,20
+96,12,snake,noun,rắn,/sneɪk/,,,,,21
+97,12,frog,noun,ếch,/frɒɡ/,,,,,22
+98,12,turtle,noun,rùa,/ˈtɜːtl/,,,,,23
+99,12,dolphin,noun,cá heo,/ˈdɒlfɪn/,,,,,24
+100,12,whale,noun,cá voi,/weɪl/,,,,,25

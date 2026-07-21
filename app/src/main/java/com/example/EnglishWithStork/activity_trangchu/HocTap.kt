@@ -56,6 +56,7 @@ class HocTap : Fragment() {
             Topic("Ngoại hình", "20 từ", R.drawable.ic_ngoaihinh, false),
             Topic("Cảm xúc", "20 từ", R.drawable.ic_camxuc, false),
             Topic("Rau củ", "20 từ", R.drawable.ic_raucu, false),
+            Topic("Hoa quả", "20 từ", R.drawable.fruits, false),
             Topic("Động vật", "40 từ", R.drawable.animals, false),
             Topic("Đồ ăn & Đồ uống", "40 từ", R.drawable.ic_doan_douong, false),
             Topic("Quốc gia", "20 từ", R.drawable.ic_quocgia, false),
