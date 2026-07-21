@@ -12,35 +12,35 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
 # Hai file CSV nguồn.
 TOPICS_CSV = (
-    PROJECT_ROOT
-    / "data_source"
-    / "topics.csv"
+        PROJECT_ROOT
+        / "data_source"
+        / "topics.csv"
 )
 
 VOCABULARIES_CSV = (
-    PROJECT_ROOT
-    / "data_source"
-    / "vocabularies.csv"
+        PROJECT_ROOT
+        / "data_source"
+        / "vocabularies.csv"
 )
 
 # Schema version 2 do Room tự sinh.
 ROOM_SCHEMA_JSON = (
-    PROJECT_ROOT
-    / "app"
-    / "schemas"
-    / "com.example.EnglishWithStork.RoomDatabase.AppDatabase"
-    / "2.json"
+        PROJECT_ROOT
+        / "app"
+        / "schemas"
+        / "com.example.EnglishWithStork.RoomDatabase.AppDatabase"
+        / "2.json"
 )
 
 # Database hoàn chỉnh được tạo vào assets.
 OUTPUT_DATABASE = (
-    PROJECT_ROOT
-    / "app"
-    / "src"
-    / "main"
-    / "assets"
-    / "database"
-    / "english_with_stork.db"
+        PROJECT_ROOT
+        / "app"
+        / "src"
+        / "main"
+        / "assets"
+        / "database"
+        / "english_with_stork.db"
 )
 
 TOPIC_HEADERS = [
@@ -73,16 +73,16 @@ def require_file(path: Path) -> None:
 
 
 def read_csv_rows(
-    path: Path,
-    expected_headers: list[str],
+        path: Path,
+        expected_headers: list[str],
 ) -> list[dict[str, str]]:
 
     require_file(path)
 
     with path.open(
-        mode="r",
-        encoding="utf-8-sig",
-        newline="",
+            mode="r",
+            encoding="utf-8-sig",
+            newline="",
     ) as file:
 
         reader = csv.DictReader(file)
@@ -100,8 +100,8 @@ def read_csv_rows(
         rows: list[dict[str, str]] = []
 
         for row_number, raw_row in enumerate(
-            reader,
-            start=2,
+                reader,
+                start=2,
         ):
 
             row = {
@@ -121,9 +121,9 @@ def read_csv_rows(
 
 
 def required_text(
-    row: dict[str, str],
-    key: str,
-    file_name: str,
+        row: dict[str, str],
+        key: str,
+        file_name: str,
 ) -> str:
 
     value = row.get(key, "").strip()
@@ -138,9 +138,9 @@ def required_text(
 
 
 def required_int(
-    row: dict[str, str],
-    key: str,
-    file_name: str,
+        row: dict[str, str],
+        key: str,
+        file_name: str,
 ) -> int:
 
     value = required_text(
@@ -161,7 +161,7 @@ def required_int(
 
 
 def nullable_text(
-    value: str,
+        value: str,
 ) -> str | None:
 
     cleaned = value.strip()
@@ -170,8 +170,8 @@ def nullable_text(
 
 
 def ensure_unique_ids(
-    ids: list[int],
-    file_name: str,
+        ids: list[int],
+        file_name: str,
 ) -> None:
 
     seen: set[int] = set()
@@ -259,7 +259,7 @@ def load_topics() -> tuple[
 
 
 def load_vocabularies(
-    valid_topic_ids: set[int],
+        valid_topic_ids: set[int],
 ) -> list[tuple[Any, ...]]:
 
     rows = read_csv_rows(
@@ -346,8 +346,8 @@ def load_room_schema() -> dict[str, Any]:
     )
 
     with ROOM_SCHEMA_JSON.open(
-        mode="r",
-        encoding="utf-8",
+            mode="r",
+            encoding="utf-8",
     ) as file:
 
         schema = json.load(file)
@@ -382,7 +382,7 @@ def load_room_schema() -> dict[str, Any]:
     }
 
     missing_tables = (
-        required_tables - table_names
+            required_tables - table_names
     )
 
     if missing_tables:
@@ -397,8 +397,8 @@ def load_room_schema() -> dict[str, Any]:
 
 
 def resolve_table_sql(
-    sql: str,
-    table_name: str,
+        sql: str,
+        table_name: str,
 ) -> str:
 
     # Một số phiên bản Room dùng biến
@@ -470,8 +470,8 @@ def create_database() -> None:
             table_name = entity["tableName"]
 
             for index in entity.get(
-                "indices",
-                [],
+                    "indices",
+                    [],
             ):
 
                 create_sql = index.get(
@@ -489,8 +489,8 @@ def create_database() -> None:
 
         # Tạo view nếu có.
         for view in database_schema.get(
-            "views",
-            [],
+                "views",
+                [],
         ):
 
             create_sql = view.get(
@@ -504,8 +504,8 @@ def create_database() -> None:
 
         # Tạo room_master_table và identity hash.
         for query in database_schema.get(
-            "setupQueries",
-            [],
+                "setupQueries",
+                [],
         ):
             connection.execute(query)
 

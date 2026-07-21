@@ -4,24 +4,29 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.EnglishWithStork.Models.hocTapOptions
-import com.example.EnglishWithStork.databinding.FragmentHocTapBinding
 import com.example.EnglishWithStork.databinding.ItemHoctapOptionsBinding
 
 class HocTapOptionsAdapter(
-    private var listHocTap: List<hocTapOptions>
-): RecyclerView.Adapter<HocTapOptionsAdapter.HocTapOptionsViewHolder>(){
+    private val listHocTap: List<hocTapOptions>
+) : RecyclerView.Adapter<
+        HocTapOptionsAdapter.HocTapOptionsViewHolder
+        >() {
+
     class HocTapOptionsViewHolder(
         val binding: ItemHoctapOptionsBinding
-    ): RecyclerView.ViewHolder(binding.root)
+    ) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(
-        p0: ViewGroup,
-        p1: Int
+        parent: ViewGroup,
+        viewType: Int
     ): HocTapOptionsViewHolder {
-        val binding = ItemHoctapOptionsBinding.inflate(LayoutInflater.from(p0.context),
-            p0,
+
+        val binding = ItemHoctapOptionsBinding.inflate(
+            LayoutInflater.from(parent.context),
+            parent,
             false
         )
+
         return HocTapOptionsViewHolder(binding)
     }
 
@@ -29,10 +34,18 @@ class HocTapOptionsAdapter(
         holder: HocTapOptionsViewHolder,
         position: Int
     ) {
-        val hoctap = listHocTap[position]
-        holder.binding.tvFeatureName.text = hoctap.name
-        holder.binding.tvFeatureDescription.text = hoctap.name
-        holder.binding.imgFeature.setImageResource(hoctap.image_description)
+
+        val hocTapOption = listHocTap[position]
+
+        holder.binding.tvFeatureName.text =
+            hocTapOption.name
+
+        holder.binding.tvFeatureDescription.text =
+            hocTapOption.description
+
+        holder.binding.imgFeature.setImageResource(
+            hocTapOption.image_description
+        )
     }
 
     override fun getItemCount(): Int {

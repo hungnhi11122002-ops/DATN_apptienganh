@@ -46,6 +46,7 @@ dependencies {
     implementation(libs.constraintlayout)
     implementation("androidx.recyclerview:recyclerview:1.4.0")
     implementation(libs.cardview)
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.11.0")
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
