@@ -1,0 +1,198 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 2,
+    "identityHash": "5a745f3ba4343dc458d1894fa7d4143c",
+    "entities": [
+      {
+        "tableName": "table_users",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `tendangnhap` TEXT NOT NULL, `matkhau` TEXT NOT NULL, `ngaysinh` TEXT NOT NULL, `gioitinh` TEXT NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "tendangnhap",
+            "columnName": "tendangnhap",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "matkhau",
+            "columnName": "matkhau",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ngaysinh",
+            "columnName": "ngaysinh",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "gioitinh",
+            "columnName": "gioitinh",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_table_users_tendangnhap",
+            "unique": true,
+            "columnNames": [
+              "tendangnhap"
+            ],
+            "orders": [],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_table_users_tendangnhap` ON `${TABLE_NAME}` (`tendangnhap`)"
+          }
+        ]
+      },
+      {
+        "tableName": "topics",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `name` TEXT NOT NULL, `image_name` TEXT NOT NULL, `sort_order` INTEGER NOT NULL, PRIMARY KEY(`id`))",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "imageName",
+            "columnName": "image_name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "sortOrder",
+            "columnName": "sort_order",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "id"
+          ]
+        }
+      },
+      {
+        "tableName": "vocabularies",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `topic_id` INTEGER NOT NULL, `english` TEXT NOT NULL, `word_class` TEXT, `vietnamese` TEXT NOT NULL, `phonetic` TEXT, `example_en` TEXT, `example_vi` TEXT, `image_name` TEXT, `audio_name` TEXT, `sort_order` INTEGER NOT NULL, PRIMARY KEY(`id`), FOREIGN KEY(`topic_id`) REFERENCES `topics`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "topicId",
+            "columnName": "topic_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "english",
+            "columnName": "english",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "wordClass",
+            "columnName": "word_class",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "vietnamese",
+            "columnName": "vietnamese",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "phonetic",
+            "columnName": "phonetic",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "exampleEnglish",
+            "columnName": "example_en",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "exampleVietnamese",
+            "columnName": "example_vi",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "imageName",
+            "columnName": "image_name",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "audioName",
+            "columnName": "audio_name",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "sortOrder",
+            "columnName": "sort_order",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_vocabularies_topic_id",
+            "unique": false,
+            "columnNames": [
+              "topic_id"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_vocabularies_topic_id` ON `${TABLE_NAME}` (`topic_id`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "topics",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "topic_id"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          }
+        ]
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '5a745f3ba4343dc458d1894fa7d4143c')"
+    ]
+  }
+}

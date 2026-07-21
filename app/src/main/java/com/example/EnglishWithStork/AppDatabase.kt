@@ -6,14 +6,23 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.EnglishWithStork.RoomDatabase.Entity.DAO
 import com.example.EnglishWithStork.RoomDatabase.Entity.Entity_user
+import com.example.EnglishWithStork.RoomDatabase.Entity.TopicDao
+import com.example.EnglishWithStork.RoomDatabase.Entity.TopicEntity
+import com.example.EnglishWithStork.RoomDatabase.Entity.VocabularyDao
+import com.example.EnglishWithStork.RoomDatabase.Entity.VocabularyEntity
 
 @Database(
-    entities = [Entity_user::class],
-    version = 1,
-    exportSchema = false
+    entities = [Entity_user::class,
+                TopicEntity::class,
+                VocabularyEntity::class],
+
+    version = 2,
+    exportSchema = true
 )
 abstract class AppDatabase: RoomDatabase() {
     abstract fun userDao(): DAO
+    abstract  fun topicDao(): TopicDao
+    abstract  fun vocabularyDao(): VocabularyDao
     companion object{
         @Volatile
         private var INSTANCE: AppDatabase? =  null
