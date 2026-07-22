@@ -47,6 +47,7 @@ dependencies {
     implementation("androidx.recyclerview:recyclerview:1.4.0")
     implementation(libs.cardview)
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.11.0")
+    implementation(libs.legacy.support.v4)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)

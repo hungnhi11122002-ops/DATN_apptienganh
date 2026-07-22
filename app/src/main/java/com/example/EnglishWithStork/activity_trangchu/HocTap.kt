@@ -97,7 +97,7 @@ class HocTap : Fragment() {
         val listTopics = listOf(
             Topic(
                 topic_name = "Gia đình",
-                description = "29 từ",
+                description = "25 từ",
                 image_description = R.drawable.family,
                 isCompleted = false,
                 topic_id = 2
@@ -105,14 +105,14 @@ class HocTap : Fragment() {
 
             Topic(
                 topic_name = "Nghề nghiệp",
-                description = "45 từ",
+                description = "25 từ",
                 image_description = R.drawable.jobs,
                 isCompleted = false,
                 topic_id = 3
             ),
             Topic(
                 topic_name = "Hoa quả",
-                description = "20 từ",
+                description = "25 từ",
                 image_description = R.drawable.fruits,
                 isCompleted = false,
                 topic_id = 10
@@ -120,7 +120,7 @@ class HocTap : Fragment() {
 
             Topic(
                 topic_name = "Động vật",
-                description = "40 từ",
+                description = "25 từ",
                 image_description = R.drawable.animals,
                 isCompleted = false,
                 topic_id = 12
@@ -226,17 +226,16 @@ class HocTap : Fragment() {
 
         binding.rvTopic.apply {
 
-            layoutManager = GridLayoutManager(
+            layoutManager = LinearLayoutManager(
                 requireContext(),
-                2,
-                GridLayoutManager.VERTICAL,
+                LinearLayoutManager.VERTICAL,
                 false
             )
 
             adapter = TopicAdapter(
-                listTopic = listTopics
+                listTopic = listTopics,
+                fullWidth = true
             ) { topic ->
-
                 openVocabularyList(topic)
             }
 

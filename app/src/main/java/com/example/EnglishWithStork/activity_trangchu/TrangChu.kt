@@ -12,6 +12,9 @@ import com.example.EnglishWithStork.Models.quick_practise
 import com.example.EnglishWithStork.UI.PractiseAdapter
 import com.example.EnglishWithStork.UI.TopicAdapter
 import com.example.EnglishWithStork.databinding.FragmentTrangChuBinding
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import android.widget.Toast
 
 class TrangChu : Fragment() {
 
@@ -35,20 +38,55 @@ class TrangChu : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val listTopic =listOf(
-            Topic("Gia đình", "29 từ",R.drawable.family,false),
-            Topic("Nghề nghiệp", "30 từ",R.drawable.jobs,false)
+        val listTopic = listOf(
+            Topic(
+                "Gia đình",
+                "25 từ",
+                R.drawable.family,
+                false,
+                2
+            ),
+            Topic(
+                "Nghề nghiệp",
+                "25 từ",
+                R.drawable.jobs,
+                false,
+                3
+            ),
+            Topic(
+                "Trái cây",
+                "25 từ",
+                R.drawable.fruits,
+                false,
+                10
+            ),
+            Topic(
+                "Động vật",
+                "25 từ",
+                R.drawable.animals,
+                false,
+                12
+            )
         )
-        binding.rvItemTopic.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-        binding.rvItemTopic.adapter = TopicAdapter(listTopic)
 
-        val listTopic2 =listOf(
-            Topic("Trái cây", "20 từ",R.drawable.fruits,false),
-            Topic("Động vật", "15 từ",R.drawable.animals,false),
+        binding.rvItemTopic.apply {
 
-        )
-        binding.rvItemTopic2.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-        binding.rvItemTopic2.adapter = TopicAdapter(listTopic2)
+            // 2: RecyclerView có 2 hàng.
+            // HORIZONTAL: cuộn từ trái sang phải.
+            layoutManager = GridLayoutManager(
+                requireContext(),
+                1,
+                RecyclerView.HORIZONTAL,
+                false
+            )
+
+            adapter = TopicAdapter(listTopic) { selectedTopic ->
+                openVocabularyList(selectedTopic)
+            }
+
+            // Chỉ nên dùng khi kích thước RecyclerView không đổi theo dữ liệu.
+            setHasFixedSize(true)
+        }
 
         val listquick_practise = listOf(
             quick_practise("Từ vựng", "Học từ vựng mỗi ngày",R.drawable.ic_prac),
@@ -58,9 +96,39 @@ class TrangChu : Fragment() {
         binding.rvItemLuyentap.adapter = PractiseAdapter(listquick_practise)
     }
 
+    private fun openVocabularyList(topic: Topic) {
+
+        // Không cho mở khi chủ đề chưa có ID hợp lệ
+        if (topic.topic_id <= 0) {
+
+            Toast.makeText(
+                requireContext(),
+                "Chủ đề này chưa có dữ liệu từ vựng",
+                Toast.LENGTH_SHORT
+            ).show()
+
+            return
+        }
+
+        // Tạo màn hình danh sách từ và truyền ID + tên chủ đề
+        val vocabListFragment = VocabListFragment.newInstance(
+            topicId = topic.topic_id,
+            topicName = topic.topic_name
+        )
+
+        // Thay Fragment Trang chủ bằng Fragment danh sách từ
+        parentFragmentManager
+            .beginTransaction()
+            .replace(
+                R.id.frame_layout,
+                vocabListFragment
+            )
+            .addToBackStack("vocab_list")
+            .commit()
+    }
+
     override fun onDestroyView() {
         binding.rvItemTopic.adapter = null
-        binding.rvItemTopic2.adapter = null
         binding.rvItemLuyentap.adapter = null
         _binding = null
         super.onDestroyView()
