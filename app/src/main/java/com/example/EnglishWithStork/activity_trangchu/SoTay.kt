@@ -1,60 +1,247 @@
 package com.example.EnglishWithStork.activity_trangchu
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.EnglishWithStork.R
+import android.widget.Toast
+import androidx.core.view.isVisible
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.EnglishWithStork.RoomDatabase.AppDatabase
+import com.example.EnglishWithStork.RoomDatabase.Entity.SavedVocabularyEntity
+import com.example.EnglishWithStork.RoomDatabase.Entity.VocabularyEntity
+import com.example.EnglishWithStork.SessionManager
+import com.example.EnglishWithStork.UI.VocabularyAdapter
+import com.example.EnglishWithStork.databinding.FragmentSoTayBinding
+import com.example.EnglishWithStork.util.EnglishTtsManager
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [SoTay.newInstance] factory method to
- * create an instance of this fragment.
- */
 class SoTay : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+    private var _binding:
+            FragmentSoTayBinding? = null
+
+    private val binding:
+            FragmentSoTayBinding
+        get() = _binding!!
+
+    private lateinit var database:
+            AppDatabase
+
+    private lateinit var vocabularyAdapter:
+            VocabularyAdapter
+
+    private lateinit var ttsManager:
+            EnglishTtsManager
+
+    private var userId: Int = -1
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+
+        _binding =
+            FragmentSoTayBinding.inflate(
+                inflater,
+                container,
+                false
+            )
+
+        return binding.root
+    }
+
+    override fun onViewCreated(
+        view: View,
+        savedInstanceState: Bundle?
+    ) {
+        super.onViewCreated(
+            view,
+            savedInstanceState
+        )
+
+        database =
+            AppDatabase.getDatabase(
+                requireContext()
+            )
+
+        userId =
+            SessionManager(
+                requireContext()
+            ).getUserId()
+
+        ttsManager =
+            EnglishTtsManager(
+                requireContext()
+            )
+
+        setupRecyclerView()
+        observeSavedVocabularies()
+    }
+
+    private fun setupRecyclerView() {
+
+        vocabularyAdapter =
+            VocabularyAdapter(
+                showTopic = false,
+                onSpeakClick = { vocabulary ->
+                    speakVocabulary(vocabulary)
+                },
+
+                onSaveClick = {
+                        vocabulary,
+                        isSaved ->
+
+                    toggleSavedVocabulary(
+                        vocabulary = vocabulary,
+                        isSaved = isSaved
+                    )
+                }
+            )
+
+        binding.rvSavedVocabulary.apply {
+
+            layoutManager =
+                LinearLayoutManager(
+                    requireContext(),
+                    LinearLayoutManager.VERTICAL,
+                    false
+                )
+
+            adapter =
+                vocabularyAdapter
+
+            setHasFixedSize(true)
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_so_tay, container, false)
+    private fun speakVocabulary(
+        vocabulary: VocabularyEntity
+    ) {
+        val success =
+            ttsManager.speak(
+                vocabulary.english
+            )
+
+        if (!success) {
+            Toast.makeText(
+                requireContext(),
+                "Máy đọc chưa sẵn sàng hoặc chưa hỗ trợ tiếng Anh",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment SoTay.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            SoTay().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+    private fun toggleSavedVocabulary(
+        vocabulary: VocabularyEntity,
+        isSaved: Boolean
+    ) {
+        if (userId <= 0) {
+            Toast.makeText(
+                requireContext(),
+                "Không tìm thấy tài khoản đang đăng nhập",
+                Toast.LENGTH_SHORT
+            ).show()
+
+            return
+        }
+
+        viewLifecycleOwner.lifecycleScope.launch {
+
+            if (isSaved) {
+                database
+                    .savedVocabularyDao()
+                    .deleteSavedVocabulary(
+                        userId = userId,
+                        vocabularyId = vocabulary.id
+                    )
+
+                Toast.makeText(
+                    requireContext(),
+                    "Đã xóa khỏi sổ tay",
+                    Toast.LENGTH_SHORT
+                ).show()
+
+            } else {
+                database
+                    .savedVocabularyDao()
+                    .insertSavedVocabulary(
+                        SavedVocabularyEntity(
+                            userId = userId,
+                            vocabularyId = vocabulary.id
+                        )
+                    )
             }
+        }
+    }
+
+    private fun observeSavedVocabularies() {
+
+        if (userId <= 0) {
+            binding.tvEmpty.text =
+                "Vui lòng đăng nhập để sử dụng sổ tay"
+
+            binding.tvEmpty.isVisible = true
+            binding.rvSavedVocabulary.isVisible = false
+            binding.tvSavedCount.text = "0 từ đã lưu"
+
+            return
+        }
+
+        viewLifecycleOwner.lifecycleScope.launch {
+
+            viewLifecycleOwner.repeatOnLifecycle(
+                Lifecycle.State.STARTED
+            ) {
+                database
+                    .savedVocabularyDao()
+                    .observeSavedVocabularies(
+                        userId
+                    )
+                    .collectLatest { vocabularies ->
+
+                        vocabularyAdapter.submitList(
+                            vocabularies
+                        )
+
+                        vocabularyAdapter
+                            .setSavedVocabularyIds(
+                                vocabularies
+                                    .map { it.id }
+                                    .toSet()
+                            )
+
+                        binding.tvSavedCount.text =
+                            "${vocabularies.size} từ đã lưu"
+
+                        val isEmpty =
+                            vocabularies.isEmpty()
+
+                        binding.tvEmpty.isVisible =
+                            isEmpty
+
+                        binding.rvSavedVocabulary.isVisible =
+                            !isEmpty
+                    }
+            }
+        }
+    }
+
+    override fun onDestroyView() {
+
+        if (::ttsManager.isInitialized) {
+            ttsManager.release()
+        }
+
+        binding.rvSavedVocabulary.adapter = null
+        _binding = null
+
+        super.onDestroyView()
     }
 }

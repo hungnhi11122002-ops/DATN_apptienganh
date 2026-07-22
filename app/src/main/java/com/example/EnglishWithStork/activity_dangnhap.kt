@@ -79,8 +79,11 @@ class activity_dangnhap: AppCompatActivity() {
 
             if(user != null) {
 
-//              Chỉ lưu TK sau khi đã đăng nhập thành công
+                SessionManager(
+                    this@activity_dangnhap
+                ).saveUserId(user.id)
 
+//              Chỉ lưu TK sau khi đã đăng nhập thành công
                 xulyGhiNhoDangNhap(
                     taiKhoan = tk,
                     matKhau = mk

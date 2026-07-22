@@ -95,15 +95,6 @@ class HocTap : Fragment() {
     private fun setupTopics() {
 
         val listTopics = listOf(
-
-            Topic(
-                topic_name = "Số đếm và phép tính",
-                description = "30 từ",
-                image_description = R.drawable.ic_tinhtoan_sodem,
-                isCompleted = false,
-                topic_id = 0
-            ),
-
             Topic(
                 topic_name = "Gia đình",
                 description = "29 từ",
@@ -118,6 +109,29 @@ class HocTap : Fragment() {
                 image_description = R.drawable.jobs,
                 isCompleted = false,
                 topic_id = 3
+            ),
+            Topic(
+                topic_name = "Hoa quả",
+                description = "20 từ",
+                image_description = R.drawable.fruits,
+                isCompleted = false,
+                topic_id = 10
+            ),
+
+            Topic(
+                topic_name = "Động vật",
+                description = "40 từ",
+                image_description = R.drawable.animals,
+                isCompleted = false,
+                topic_id = 12
+            ),
+
+            Topic(
+                topic_name = "Số đếm và phép tính",
+                description = "30 từ",
+                image_description = R.drawable.ic_tinhtoan_sodem,
+                isCompleted = false,
+                topic_id = 0
             ),
 
             Topic(
@@ -176,21 +190,6 @@ class HocTap : Fragment() {
                 topic_id = 0
             ),
 
-            Topic(
-                topic_name = "Hoa quả",
-                description = "20 từ",
-                image_description = R.drawable.fruits,
-                isCompleted = false,
-                topic_id = 10
-            ),
-
-            Topic(
-                topic_name = "Động vật",
-                description = "40 từ",
-                image_description = R.drawable.animals,
-                isCompleted = false,
-                topic_id = 12
-            ),
 
             Topic(
                 topic_name = "Đồ ăn & Đồ uống",
