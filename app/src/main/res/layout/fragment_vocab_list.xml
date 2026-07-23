@@ -4,18 +4,17 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F8F9FD"
-    android:orientation="vertical"
-    android:backgroundTint="@color/stork_blue_light"
-    >
+    android:background="@color/stork_blue_light"
+    android:orientation="vertical">
 
+    <!-- Phần tiêu đề -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:paddingStart="12dp"
-        android:paddingTop="22dp"
+        android:paddingTop="30dp"
         android:paddingEnd="16dp"
         android:paddingBottom="14dp">
 
@@ -25,8 +24,7 @@
             android:layout_height="44dp"
             android:background="@drawable/ic_backward"
             android:contentDescription="Quay lại"
-            android:padding="10dp"
-        />
+            android:padding="10dp" />
 
         <LinearLayout
             android:layout_width="0dp"
@@ -54,6 +52,43 @@
                 android:textSize="14sp" />
 
         </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/bg_trang"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="16dp"
+        android:paddingEnd="12dp">
+
+        <EditText
+            android:id="@+id/edtSearchVocabulary"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:gravity="center_vertical"
+            android:hint="Tìm kiếm từ vựng"
+            android:imeOptions="actionSearch"
+            android:inputType="text"
+            android:maxLines="1"
+            android:padding="0dp"
+            android:textColor="#111827"
+            android:textColorHint="#9CA3AF"
+            android:textSize="15sp" />
+
+        <ImageView
+            android:id="@+id/imgSearch"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:contentDescription="Tìm kiếm"
+            android:src="@drawable/ic_search" />
 
     </LinearLayout>
 

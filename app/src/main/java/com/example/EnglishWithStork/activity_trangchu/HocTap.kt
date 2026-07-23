@@ -55,6 +55,12 @@ class HocTap : Fragment() {
         val listHocTapOptions = listOf(
 
             hocTapOptions(
+                name = "Từ điển",
+                description = "Tra cứu từ vựng online",
+                image_description = R.drawable.ic_dictionary
+            ),
+
+            hocTapOptions(
                 name = "FlashCard",
                 description = "Học từ vựng qua thẻ",
                 image_description = R.drawable.ic_flashcard

@@ -89,7 +89,7 @@ class TrangChu : Fragment() {
         }
 
         val listquick_practise = listOf(
-            quick_practise("Từ vựng", "Học từ vựng mỗi ngày",R.drawable.ic_prac),
+            quick_practise("Ôn tập", "Ôn tập lại từ vựng",R.drawable.ic_ontap),
             quick_practise("Kiểm tra", "Kiểm tra kiến thức",R.drawable.ic_exam)
         )
         binding.rvItemLuyentap.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
