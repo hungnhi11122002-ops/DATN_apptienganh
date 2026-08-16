@@ -89,7 +89,27 @@ class HocTap : Fragment() {
 
             adapter = HocTapOptionsAdapter(
                 listHocTapOptions
-            )
+            ) { option ->
+
+                when (option.name) {
+
+                    "FlashCard" -> {
+                        openFlashCard()
+                    }
+
+                    "Từ điển" -> {
+                        // Sau này xử lý từ điển
+                    }
+
+                    "Kiểm tra" -> {
+                        // Sau này mở màn hình kiểm tra
+                    }
+
+                    "Ôn tập" -> {
+                        // Sau này mở màn hình ôn tập
+                    }
+                }
+            }
 
             setHasFixedSize(true)
         }
@@ -247,6 +267,23 @@ class HocTap : Fragment() {
 
             setHasFixedSize(true)
         }
+    }
+
+    private fun openFlashCard() {
+
+        val fragment = FlashCardFragment.newInstance(
+            topicId = 12,
+            topicName = "Động vật"
+        )
+
+        parentFragmentManager
+            .beginTransaction()
+            .replace(
+                R.id.frame_layout,
+                fragment
+            )
+            .addToBackStack("flash_card")
+            .commit()
     }
 
     /**

@@ -7,10 +7,9 @@ import com.example.EnglishWithStork.Models.hocTapOptions
 import com.example.EnglishWithStork.databinding.ItemHoctapOptionsBinding
 
 class HocTapOptionsAdapter(
-    private val listHocTap: List<hocTapOptions>
-) : RecyclerView.Adapter<
-        HocTapOptionsAdapter.HocTapOptionsViewHolder
-        >() {
+    private val listHocTap: List<hocTapOptions>,
+    private val onItemClick: (hocTapOptions) -> Unit
+) : RecyclerView.Adapter<HocTapOptionsAdapter.HocTapOptionsViewHolder>() {
 
     class HocTapOptionsViewHolder(
         val binding: ItemHoctapOptionsBinding
@@ -46,6 +45,11 @@ class HocTapOptionsAdapter(
         holder.binding.imgFeature.setImageResource(
             hocTapOption.image_description
         )
+
+        // Xử lý click toàn bộ card
+        holder.binding.root.setOnClickListener {
+            onItemClick(hocTapOption)
+        }
     }
 
     override fun getItemCount(): Int {
