@@ -134,99 +134,99 @@ class HocTap : Fragment() {
 
             Topic(
                 topic_name = "Số đếm và phép tính",
-                description = "30 từ",
+                description = "5 từ",
                 image_description = R.drawable.ic_tinhtoan_sodem,
                 isCompleted = false,
-                topic_id = 0
+                topic_id = 1
             ),
 
             Topic(
                 topic_name = "Thời tiết",
-                description = "40 từ",
+                description = "5 từ",
                 image_description = R.drawable.ic_thoitiet1,
                 isCompleted = false,
-                topic_id = 0
+                topic_id = 4
             ),
 
             Topic(
                 topic_name = "Quần áo",
-                description = "40 từ",
+                description = "5 từ",
                 image_description = R.drawable.ic_clothes,
                 isCompleted = false,
-                topic_id = 0
+                topic_id = 5
             ),
 
             Topic(
                 topic_name = "Tính cách",
-                description = "20 từ",
+                description = "5 từ",
                 image_description = R.drawable.ic_tinhcach,
                 isCompleted = false,
-                topic_id = 0
+                topic_id = 6
             ),
 
             Topic(
                 topic_name = "Bộ phận cơ thể",
-                description = "20 từ",
+                description = "5 từ",
                 image_description = R.drawable.ic_bophancothe,
                 isCompleted = false,
-                topic_id = 0
+                topic_id = 7
             ),
 
             Topic(
                 topic_name = "Ngoại hình",
-                description = "20 từ",
+                description = "25 từ",
                 image_description = R.drawable.ic_ngoaihinh,
                 isCompleted = false,
-                topic_id = 0
+                topic_id = 8
             ),
 
             Topic(
                 topic_name = "Cảm xúc",
-                description = "20 từ",
+                description = "5 từ",
                 image_description = R.drawable.ic_camxuc,
                 isCompleted = false,
-                topic_id = 0
+                topic_id = 9
             ),
 
             Topic(
                 topic_name = "Rau củ",
-                description = "20 từ",
+                description = "5 từ",
                 image_description = R.drawable.ic_raucu,
                 isCompleted = false,
-                topic_id = 0
+                topic_id = 11
             ),
 
 
             Topic(
                 topic_name = "Đồ ăn & Đồ uống",
-                description = "40 từ",
+                description = "5 từ",
                 image_description = R.drawable.ic_doan_douong,
                 isCompleted = false,
-                topic_id = 0
+                topic_id = 13
             ),
 
             Topic(
                 topic_name = "Quốc gia",
-                description = "20 từ",
+                description = "5 từ",
                 image_description = R.drawable.ic_quocgia,
                 isCompleted = false,
-                topic_id = 0
+                topic_id = 14
             ),
 
             Topic(
                 topic_name = "Mua sắm",
-                description = "20 từ",
+                description = "5 từ",
                 image_description = R.drawable.ic_muasam,
                 isCompleted = false,
-                topic_id = 0
+                topic_id = 15
             ),
 
             Topic(
                 topic_name = "Sức khỏe",
-                description = "20 từ",
+                description = "5 từ",
                 image_description = R.drawable.ic_suckhoe,
                 isCompleted = false,
-                topic_id = 0
+                topic_id = 16
             )
         )
 
@@ -277,12 +277,9 @@ class HocTap : Fragment() {
     }
 
     override fun onDestroyView() {
-
         binding.rvItemHoctapOptions.adapter = null
         binding.rvTopic.adapter = null
-
         _binding = null
-
         super.onDestroyView()
     }
 }

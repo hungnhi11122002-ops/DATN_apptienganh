@@ -1,101 +1,161 @@
 id,topic_id,english,word_class,vietnamese,phonetic,example_en,example_vi,image_name,audio_name,sort_order
-1,2,family,noun,gia đình,/ˈfæməli/,,,,,1
-2,2,father,noun,"bố, cha",/ˈfɑːðə(r)/,,,,,2
-3,2,mother,noun,mẹ,/ˈmʌðə(r)/,,,,,3
-4,2,parents,noun,"bố mẹ, cha mẹ",/ˈpeərənts/,,,,,4
-5,2,son,noun,con trai,/sʌn/,,,,,5
-6,2,daughter,noun,con gái,/ˈdɔːtə(r)/,,,,,6
-7,2,brother,noun,anh/em trai,/ˈbrʌðə(r)/,,,,,7
-8,2,sister,noun,chị/em gái,/ˈsɪstə(r)/,,,,,8
-9,2,husband,noun,chồng,/ˈhʌzbənd/,,,,,9
-10,2,wife,noun,vợ,/waɪf/,,,,,10
-11,2,grandfather,noun,ông,/ˈɡrænfɑːðə(r)/,,,,,11
-12,2,grandmother,noun,bà,/ˈɡrænmʌðə(r)/,,,,,12
-13,2,grandparents,noun,ông bà,/ˈɡrænpeərənts/,,,,,13
-14,2,uncle,noun,"chú, bác, cậu",/ˈʌŋkl/,,,,,14
-15,2,aunt,noun,"cô, dì, bác gái",/ɑːnt/,,,,,15
-16,2,cousin,noun,anh/chị/em họ,/ˈkʌzn/,,,,,16
-17,2,nephew,noun,cháu trai,/ˈnefjuː/,,,,,17
-18,2,niece,noun,cháu gái,/niːs/,,,,,18
-19,2,baby,noun,em bé,/ˈbeɪbi/,,,,,19
-20,2,child,noun,"đứa trẻ, con",/tʃaɪld/,,,,,20
-21,2,children,noun,"trẻ em, các con",/ˈtʃɪldrən/,,,,,21
-22,2,grandson,noun,cháu trai,/ˈɡrænsʌn/,,,,,22
-23,2,granddaughter,noun,cháu gái,/ˈɡrændɔːtə(r)/,,,,,23
-24,2,relative,noun,"họ hàng, người thân",/ˈrelətɪv/,,,,,24
-25,2,twins,noun,cặp song sinh,/twɪnz/,,,,,25
-26,3,doctor,noun,bác sĩ,/ˈdɒktə(r)/,,,,,1
-27,3,nurse,noun,"y tá, điều dưỡng",/nɜːs/,,,,,2
-28,3,teacher,noun,giáo viên,/ˈtiːtʃə(r)/,,,,,3
-29,3,engineer,noun,kỹ sư,/ˌendʒɪˈnɪə(r)/,,,,,4
-30,3,farmer,noun,nông dân,/ˈfɑːmə(r)/,,,,,5
-31,3,driver,noun,tài xế,/ˈdraɪvə(r)/,,,,,6
-32,3,police officer,noun,cảnh sát,/pəˈliːs ˌɒfɪsə(r)/,,,,,7
-33,3,firefighter,noun,lính cứu hỏa,/ˈfaɪəfaɪtə(r)/,,,,,8
-34,3,chef,noun,"bếp trưởng, đầu bếp chuyên nghiệp",/ʃef/,,,,,9
-35,3,cook,noun,đầu bếp,/kʊk/,,,,,10
-36,3,waiter,noun,nhân viên phục vụ nam,/ˈweɪtə(r)/,,,,,11
-37,3,waitress,noun,nhân viên phục vụ nữ,/ˈweɪtrəs/,,,,,12
-38,3,dentist,noun,nha sĩ,/ˈdentɪst/,,,,,13
-39,3,pilot,noun,phi công,/ˈpaɪlət/,,,,,14
-40,3,soldier,noun,binh sĩ,/ˈsəʊldʒə(r)/,,,,,15
-41,3,lawyer,noun,luật sư,/ˈlɔɪə(r)/,,,,,16
-42,3,artist,noun,"họa sĩ, nghệ sĩ",/ˈɑːtɪst/,,,,,17
-43,3,singer,noun,ca sĩ,/ˈsɪŋə(r)/,,,,,18
-44,3,actor,noun,diễn viên nam,/ˈæktə(r)/,,,,,19
-45,3,actress,noun,diễn viên nữ,/ˈæktrəs/,,,,,20
-46,3,writer,noun,"nhà văn, người viết",/ˈraɪtə(r)/,,,,,21
-47,3,mechanic,noun,"thợ cơ khí, thợ sửa máy",/məˈkænɪk/,,,,,22
-48,3,electrician,noun,thợ điện,/ɪˌlekˈtrɪʃn/,,,,,23
-49,3,shop assistant,noun,nhân viên bán hàng,/ˈʃɒp əsɪstənt/,,,,,24
-50,3,accountant,noun,kế toán,/əˈkaʊntənt/,,,,,25
-51,10,apple,noun,quả táo,/ˈæpl/,,,,,1
-52,10,banana,noun,quả chuối,/bəˈnɑːnə/,,,,,2
-53,10,orange,noun,quả cam,/ˈɒrɪndʒ/,,,,,3
-54,10,mango,noun,quả xoài,/ˈmæŋɡəʊ/,,,,,4
-55,10,grape,noun,quả nho,/ɡreɪp/,,,,,5
-56,10,watermelon,noun,dưa hấu,/ˈwɔːtəmelən/,,,,,6
-57,10,pineapple,noun,"quả dứa, quả thơm",/ˈpaɪnæpl/,,,,,7
-58,10,strawberry,noun,dâu tây,/ˈstrɔːbəri/,,,,,8
-59,10,blueberry,noun,việt quất,/ˈbluːbəri/,,,,,9
-60,10,raspberry,noun,quả mâm xôi,/ˈrɑːzbəri/,,,,,10
-61,10,cherry,noun,quả anh đào,/ˈtʃeri/,,,,,11
-62,10,peach,noun,quả đào,/piːtʃ/,,,,,12
-63,10,pear,noun,quả lê,/peə(r)/,,,,,13
-64,10,lemon,noun,quả chanh vàng,/ˈlemən/,,,,,14
-65,10,lime,noun,quả chanh xanh,/laɪm/,,,,,15
-66,10,coconut,noun,quả dừa,/ˈkəʊkənʌt/,,,,,16
-67,10,papaya,noun,quả đu đủ,/pəˈpaɪə/,,,,,17
-68,10,guava,noun,quả ổi,/ˈɡwɑːvə/,,,,,18
-69,10,kiwi,noun,quả kiwi,/ˈkiːwiː/,,,,,19
-70,10,plum,noun,quả mận,/plʌm/,,,,,20
-71,10,melon,noun,dưa,/ˈmelən/,,,,,21
-72,10,avocado,noun,quả bơ,/ˌævəˈkɑːdəʊ/,,,,,22
-73,10,pomegranate,noun,quả lựu,/ˈpɒmɪɡrænɪt/,,,,,23
-74,10,grapefruit,noun,quả bưởi chùm,/ˈɡreɪpfruːt/,,,,,24
-75,10,dragon fruit,noun,quả thanh long,/ˈdræɡən fruːt/,,,,,25
-76,12,dog,noun,con chó,/dɒɡ/,,,,,1
-77,12,cat,noun,con mèo,/kæt/,,,,,2
-78,12,bird,noun,con chim,/bɜːd/,,,,,3
-79,12,fish,noun,con cá,/fɪʃ/,,,,,4
-80,12,horse,noun,con ngựa,/hɔːs/,,,,,5
-81,12,cow,noun,con bò,/kaʊ/,,,,,6
-82,12,pig,noun,"con lợn, con heo",/pɪɡ/,,,,,7
-83,12,chicken,noun,con gà,/ˈtʃɪkɪn/,,,,,8
-84,12,duck,noun,con vịt,/dʌk/,,,,,9
-85,12,sheep,noun,con cừu,/ʃiːp/,,,,,10
-86,12,goat,noun,con dê,/ɡəʊt/,,,,,11
-87,12,rabbit,noun,con thỏ,/ˈræbɪt/,,,,,12
-88,12,mouse,noun,con chuột,/maʊs/,,,,,13
-89,12,lion,noun,sư tử,/ˈlaɪən/,,,,,14
-90,12,tiger,noun,hổ,/ˈtaɪɡə(r)/,,,,,15
-91,12,elephant,noun,voi,/ˈelɪfənt/,,,,,16
-92,12,monkey,noun,khỉ,/ˈmʌŋki/,,,,,17
-93,12,bear,noun,gấu,/beə(r)/,,,,,18
-94,12,giraffe,noun,hươu cao cổ,/dʒəˈrɑːf/,,,,,19
-95,12,zebra,noun,ngựa vằn,/ˈzebrə/,,,,,20
-96,12,snake,noun,rắn,/sneɪk/,,,,,21
-97,12,frog,noun,ếch,/frɒɡ/,,,,,22
-98,12,turtle,noun,rùa,/ˈtɜːtl/,,,,,23
-99,12,dolphin,noun,cá heo,/ˈdɒlfɪn/,,,,,24
-100,12,whale,noun,cá voi,/weɪl/,,,,,25
+1,2,family,noun,gia đình,/ˈfæməli/,I love my family.,Tôi yêu gia đình của mình.,,,1
+2,2,father,noun,"bố, cha",/ˈfɑːðə(r)/,My father is a doctor.,Bố tôi là bác sĩ.,,,2
+3,2,mother,noun,mẹ,/ˈmʌðə(r)/,My mother cooks dinner every day.,Mẹ tôi nấu bữa tối mỗi ngày.,,,3
+4,2,parents,noun,"bố mẹ, cha mẹ",/ˈpeərənts/,My parents are very kind.,Bố mẹ tôi rất tốt bụng.,,,4
+5,2,son,noun,con trai,/sʌn/,They have one son.,Họ có một người con trai.,,,5
+6,2,daughter,noun,con gái,/ˈdɔːtə(r)/,Their daughter is ten years old.,Con gái của họ mười tuổi.,,,6
+7,2,brother,noun,anh/em trai,/ˈbrʌðə(r)/,My brother plays football after school.,Anh trai tôi chơi bóng đá sau giờ học.,,,7
+8,2,sister,noun,chị/em gái,/ˈsɪstə(r)/,My sister is a student.,Chị gái tôi là học sinh.,,,8
+9,2,husband,noun,chồng,/ˈhʌzbənd/,Her husband works in a bank.,Chồng cô ấy làm việc ở ngân hàng.,,,9
+10,2,wife,noun,vợ,/waɪf/,His wife is a teacher.,Vợ anh ấy là giáo viên.,,,10
+11,2,grandfather,noun,ông,/ˈɡrænfɑːðə(r)/,My grandfather is seventy years old.,Ông tôi bảy mươi tuổi.,,,11
+12,2,grandmother,noun,bà,/ˈɡrænmʌðə(r)/,My grandmother tells me stories.,Bà tôi kể chuyện cho tôi.,,,12
+13,2,grandparents,noun,ông bà,/ˈɡrænpeərənts/,I visit my grandparents every weekend.,Tôi thăm ông bà mỗi cuối tuần.,,,13
+14,2,uncle,noun,"chú, bác, cậu",/ˈʌŋkl/,My uncle lives in Hanoi.,Chú tôi sống ở Hà Nội.,,,14
+15,2,aunt,noun,"cô, dì, bác gái",/ɑːnt/,My aunt has a small shop.,Dì tôi có một cửa hàng nhỏ.,,,15
+16,2,cousin,noun,anh/chị/em họ,/ˈkʌzn/,I often play with my cousin.,Tôi thường chơi với người anh họ của mình.,,,16
+17,2,nephew,noun,cháu trai,/ˈnefjuː/,My nephew is five years old.,Cháu trai tôi năm tuổi.,,,17
+18,2,niece,noun,cháu gái,/niːs/,My niece likes drawing pictures.,Cháu gái tôi thích vẽ tranh.,,,18
+19,2,baby,noun,em bé,/ˈbeɪbi/,The baby is sleeping.,Em bé đang ngủ.,,,19
+20,2,child,noun,"đứa trẻ, con",/tʃaɪld/,The child is playing in the garden.,Đứa trẻ đang chơi trong vườn.,,,20
+21,2,children,noun,"trẻ em, các con",/ˈtʃɪldrən/,The children are playing together.,Bọn trẻ đang chơi cùng nhau.,,,21
+22,2,grandson,noun,cháu trai,/ˈɡrænsʌn/,Their grandson goes to primary school.,Cháu trai của họ học tiểu học.,,,22
+23,2,granddaughter,noun,cháu gái,/ˈɡrændɔːtə(r)/,Her granddaughter loves music.,Cháu gái của bà ấy thích âm nhạc.,,,23
+24,2,relative,noun,"họ hàng, người thân",/ˈrelətɪv/,Many relatives came to the party.,Nhiều người thân đã đến bữa tiệc.,,,24
+25,2,twins,noun,cặp song sinh,/twɪnz/,The twins look very similar.,Cặp song sinh trông rất giống nhau.,,,25
+26,3,doctor,noun,bác sĩ,/ˈdɒktə(r)/,The doctor works at a hospital.,Bác sĩ làm việc tại bệnh viện.,,,1
+27,3,nurse,noun,"y tá, điều dưỡng",/nɜːs/,The nurse takes care of the patient.,Y tá chăm sóc bệnh nhân.,,,2
+28,3,teacher,noun,giáo viên,/ˈtiːtʃə(r)/,My teacher teaches English.,Giáo viên của tôi dạy tiếng Anh.,,,3
+29,3,engineer,noun,kỹ sư,/ˌendʒɪˈnɪə(r)/,My brother wants to be an engineer.,Anh trai tôi muốn trở thành kỹ sư.,,,4
+30,3,farmer,noun,nông dân,/ˈfɑːmə(r)/,The farmer works on the farm.,Người nông dân làm việc ở trang trại.,,,5
+31,3,driver,noun,tài xế,/ˈdraɪvə(r)/,The driver drives a bus every day.,Tài xế lái xe buýt mỗi ngày.,,,6
+32,3,police officer,noun,cảnh sát,/pəˈliːs ˌɒfɪsə(r)/,The police officer helps people.,Cảnh sát giúp đỡ mọi người.,,,7
+33,3,firefighter,noun,lính cứu hỏa,/ˈfaɪəfaɪtə(r)/,The firefighter puts out fires.,Lính cứu hỏa dập tắt các đám cháy.,,,8
+34,3,chef,noun,"bếp trưởng, đầu bếp chuyên nghiệp",/ʃef/,The chef cooks delicious food.,Đầu bếp nấu những món ăn ngon.,,,9
+35,3,cook,noun,đầu bếp,/kʊk/,The cook prepares lunch for us.,Đầu bếp chuẩn bị bữa trưa cho chúng tôi.,,,10
+36,3,waiter,noun,nhân viên phục vụ nam,/ˈweɪtə(r)/,The waiter brings our food.,Nhân viên phục vụ nam mang đồ ăn cho chúng tôi.,,,11
+37,3,waitress,noun,nhân viên phục vụ nữ,/ˈweɪtrəs/,The waitress takes our order.,Nhân viên phục vụ nữ nhận món chúng tôi gọi.,,,12
+38,3,dentist,noun,nha sĩ,/ˈdentɪst/,I visit the dentist twice a year.,Tôi đến nha sĩ hai lần một năm.,,,13
+39,3,pilot,noun,phi công,/ˈpaɪlət/,The pilot flies an airplane.,Phi công lái máy bay.,,,14
+40,3,soldier,noun,binh sĩ,/ˈsəʊldʒə(r)/,The soldier wears a uniform.,Người lính mặc quân phục.,,,15
+41,3,lawyer,noun,luật sư,/ˈlɔɪə(r)/,The lawyer works in an office.,Luật sư làm việc trong văn phòng.,,,16
+42,3,artist,noun,"họa sĩ, nghệ sĩ",/ˈɑːtɪst/,The artist paints beautiful pictures.,Họa sĩ vẽ những bức tranh đẹp.,,,17
+43,3,singer,noun,ca sĩ,/ˈsɪŋə(r)/,The singer has a beautiful voice.,Ca sĩ có một giọng hát hay.,,,18
+44,3,actor,noun,diễn viên nam,/ˈæktə(r)/,The actor is famous around the world.,Nam diễn viên nổi tiếng trên toàn thế giới.,,,19
+45,3,actress,noun,diễn viên nữ,/ˈæktrəs/,The actress appears in many films.,Nữ diễn viên xuất hiện trong nhiều bộ phim.,,,20
+46,3,writer,noun,"nhà văn, người viết",/ˈraɪtə(r)/,The writer writes children's books.,Nhà văn viết sách cho trẻ em.,,,21
+47,3,mechanic,noun,"thợ cơ khí, thợ sửa máy",/məˈkænɪk/,The mechanic repairs my car.,Thợ sửa máy sửa chiếc ô tô của tôi.,,,22
+48,3,electrician,noun,thợ điện,/ɪˌlekˈtrɪʃn/,The electrician fixes the lights.,Thợ điện sửa hệ thống đèn.,,,23
+49,3,shop assistant,noun,nhân viên bán hàng,/ˈʃɒp əsɪstənt/,The shop assistant helps the customers.,Nhân viên bán hàng giúp đỡ khách hàng.,,,24
+50,3,accountant,noun,kế toán,/əˈkaʊntənt/,The accountant works with numbers.,Kế toán làm việc với các con số.,,,25
+51,10,apple,noun,quả táo,/ˈæpl/,I eat an apple every morning.,Tôi ăn một quả táo mỗi sáng.,,,1
+52,10,banana,noun,quả chuối,/bəˈnɑːnə/,She eats a banana after breakfast.,Cô ấy ăn một quả chuối sau bữa sáng.,,,2
+53,10,orange,noun,quả cam,/ˈɒrɪndʒ/,This orange is very sweet.,Quả cam này rất ngọt.,,,3
+54,10,mango,noun,quả xoài,/ˈmæŋɡəʊ/,Mango is my favorite fruit.,Xoài là loại trái cây yêu thích của tôi.,,,4
+55,10,grape,noun,quả nho,/ɡreɪp/,These grapes are fresh.,Những quả nho này rất tươi.,,,5
+56,10,watermelon,noun,dưa hấu,/ˈwɔːtəmelən/,We eat watermelon in summer.,Chúng tôi ăn dưa hấu vào mùa hè.,,,6
+57,10,pineapple,noun,"quả dứa, quả thơm",/ˈpaɪnæpl/,She cuts the pineapple into pieces.,Cô ấy cắt quả dứa thành từng miếng.,,,7
+58,10,strawberry,noun,dâu tây,/ˈstrɔːbəri/,The strawberry is red and sweet.,Quả dâu tây có màu đỏ và vị ngọt.,,,8
+59,10,blueberry,noun,việt quất,/ˈbluːbəri/,I put blueberries in my yogurt.,Tôi cho việt quất vào sữa chua.,,,9
+60,10,raspberry,noun,quả mâm xôi,/ˈrɑːzbəri/,Raspberries are small and red.,Quả mâm xôi nhỏ và có màu đỏ.,,,10
+61,10,cherry,noun,quả anh đào,/ˈtʃeri/,There is a cherry on the cake.,Có một quả anh đào trên chiếc bánh.,,,11
+62,10,peach,noun,quả đào,/piːtʃ/,This peach is soft and sweet.,Quả đào này mềm và ngọt.,,,12
+63,10,pear,noun,quả lê,/peə(r)/,I bought a green pear.,Tôi đã mua một quả lê xanh.,,,13
+64,10,lemon,noun,quả chanh vàng,/ˈlemən/,Lemon juice tastes sour.,Nước chanh vàng có vị chua.,,,14
+65,10,lime,noun,quả chanh xanh,/laɪm/,She adds lime to the drink.,Cô ấy cho chanh xanh vào đồ uống.,,,15
+66,10,coconut,noun,quả dừa,/ˈkəʊkənʌt/,Coconut water is refreshing.,Nước dừa rất giải khát.,,,16
+67,10,papaya,noun,quả đu đủ,/pəˈpaɪə/,The papaya is ripe.,Quả đu đủ đã chín.,,,17
+68,10,guava,noun,quả ổi,/ˈɡwɑːvə/,This guava is very crunchy.,Quả ổi này rất giòn.,,,18
+69,10,kiwi,noun,quả kiwi,/ˈkiːwiː/,The kiwi is green inside.,Quả kiwi có màu xanh bên trong.,,,19
+70,10,plum,noun,quả mận,/plʌm/,She ate two plums.,Cô ấy đã ăn hai quả mận.,,,20
+71,10,melon,noun,dưa,/ˈmelən/,The melon smells sweet.,Quả dưa có mùi thơm ngọt.,,,21
+72,10,avocado,noun,quả bơ,/ˌævəˈkɑːdəʊ/,I eat avocado with bread.,Tôi ăn bơ cùng với bánh mì.,,,22
+73,10,pomegranate,noun,quả lựu,/ˈpɒmɪɡrænɪt/,The pomegranate has many seeds.,Quả lựu có nhiều hạt.,,,23
+74,10,grapefruit,noun,quả bưởi chùm,/ˈɡreɪpfruːt/,Grapefruit has a slightly bitter taste.,Bưởi chùm có vị hơi đắng.,,,24
+75,10,dragon fruit,noun,quả thanh long,/ˈdræɡən fruːt/,Dragon fruit is popular in Vietnam.,Thanh long rất phổ biến ở Việt Nam.,,,25
+76,12,dog,noun,con chó,/dɒɡ/,My dog likes to run in the park.,Con chó của tôi thích chạy trong công viên.,,,1
+77,12,cat,noun,con mèo,/kæt/,The cat is sleeping on the sofa.,Con mèo đang ngủ trên ghế sofa.,,,2
+78,12,bird,noun,con chim,/bɜːd/,The bird is singing in the tree.,Con chim đang hót trên cây.,,,3
+79,12,fish,noun,con cá,/fɪʃ/,The fish swims in the water.,Con cá bơi trong nước.,,,4
+80,12,horse,noun,con ngựa,/hɔːs/,The horse runs very fast.,Con ngựa chạy rất nhanh.,,,5
+81,12,cow,noun,con bò,/kaʊ/,The cow eats grass.,Con bò ăn cỏ.,,,6
+82,12,pig,noun,"con lợn, con heo",/pɪɡ/,The pig lives on the farm.,Con lợn sống ở trang trại.,,,7
+83,12,chicken,noun,con gà,/ˈtʃɪkɪn/,The chicken is looking for food.,Con gà đang tìm thức ăn.,,,8
+84,12,duck,noun,con vịt,/dʌk/,The duck swims in the pond.,Con vịt bơi trong ao.,,,9
+85,12,sheep,noun,con cừu,/ʃiːp/,The sheep has white wool.,Con cừu có bộ lông màu trắng.,,,10
+86,12,goat,noun,con dê,/ɡəʊt/,The goat is eating leaves.,Con dê đang ăn lá cây.,,,11
+87,12,rabbit,noun,con thỏ,/ˈræbɪt/,The rabbit has long ears.,Con thỏ có đôi tai dài.,,,12
+88,12,mouse,noun,con chuột,/maʊs/,The mouse is under the table.,Con chuột ở dưới bàn.,,,13
+89,12,lion,noun,sư tử,/ˈlaɪən/,The lion is a strong animal.,Sư tử là một loài động vật mạnh mẽ.,,,14
+90,12,tiger,noun,hổ,/ˈtaɪɡə(r)/,The tiger has black stripes.,Con hổ có những sọc màu đen.,,,15
+91,12,elephant,noun,voi,/ˈelɪfənt/,The elephant has a long trunk.,Con voi có một chiếc vòi dài.,,,16
+92,12,monkey,noun,khỉ,/ˈmʌŋki/,The monkey is climbing a tree.,Con khỉ đang trèo cây.,,,17
+93,12,bear,noun,gấu,/beə(r)/,The bear is looking for food.,Con gấu đang tìm thức ăn.,,,18
+94,12,giraffe,noun,hươu cao cổ,/dʒəˈrɑːf/,The giraffe has a very long neck.,Hươu cao cổ có chiếc cổ rất dài.,,,19
+95,12,zebra,noun,ngựa vằn,/ˈzebrə/,The zebra has black and white stripes.,Ngựa vằn có các sọc đen và trắng.,,,20
+96,12,snake,noun,rắn,/sneɪk/,The snake moves through the grass.,Con rắn bò qua bãi cỏ.,,,21
+97,12,frog,noun,ếch,/frɒɡ/,The frog can jump very high.,Con ếch có thể nhảy rất cao.,,,22
+98,12,turtle,noun,rùa,/ˈtɜːtl/,The turtle moves slowly.,Con rùa di chuyển chậm.,,,23
+99,12,dolphin,noun,cá heo,/ˈdɒlfɪn/,The dolphin swims very fast.,Cá heo bơi rất nhanh.,,,24
+100,12,whale,noun,cá voi,/weɪl/,The whale lives in the ocean.,Cá voi sống ở đại dương.,,,25
+101,1,one,number,một,/wʌn/,I have one book.,Tôi có một quyển sách.,,,1
+102,1,two,number,hai,/tuː/,She has two cats.,Cô ấy có hai con mèo.,,,2
+103,1,three,number,ba,/θriː/,There are three apples.,Có ba quả táo.,,,3
+104,1,plus,preposition,cộng,/plʌs/,Two plus three is five.,Hai cộng ba bằng năm.,,,4
+105,1,minus,preposition,trừ,/ˈmaɪnəs/,Five minus two is three.,Năm trừ hai bằng ba.,,,5
+106,4,sunny,adjective,có nắng,/ˈsʌni/,It is sunny today.,Hôm nay trời có nắng.,,,1
+107,4,rainy,adjective,có mưa,/ˈreɪni/,It is rainy this morning.,Sáng nay trời có mưa.,,,2
+108,4,cloudy,adjective,nhiều mây,/ˈklaʊdi/,The sky is cloudy.,Bầu trời nhiều mây.,,,3
+109,4,windy,adjective,có gió,/ˈwɪndi/,It is windy outside.,Ngoài trời có gió.,,,4
+110,4,stormy,adjective,có bão,/ˈstɔːmi/,The weather is stormy.,Thời tiết có bão.,,,5
+111,5,shirt,noun,áo sơ mi,/ʃɜːt/,He is wearing a white shirt.,Anh ấy đang mặc áo sơ mi trắng.,,,1
+112,5,trousers,noun,quần dài,/ˈtraʊzəz/,These trousers are black.,Chiếc quần dài này màu đen.,,,2
+113,5,dress,noun,váy liền,/dres/,She is wearing a red dress.,Cô ấy đang mặc một chiếc váy đỏ.,,,3
+114,5,jacket,noun,áo khoác,/ˈdʒækɪt/,I need a jacket today.,Hôm nay tôi cần một chiếc áo khoác.,,,4
+115,5,shoes,noun,giày,/ʃuːz/,My shoes are new.,Đôi giày của tôi còn mới.,,,5
+116,6,kind,adjective,tốt bụng,/kaɪnd/,My teacher is very kind.,Giáo viên của tôi rất tốt bụng.,,,1
+117,6,friendly,adjective,thân thiện,/ˈfrendli/,She is friendly to everyone.,Cô ấy thân thiện với mọi người.,,,2
+118,6,honest,adjective,trung thực,/ˈɒnɪst/,He is an honest person.,Anh ấy là một người trung thực.,,,3
+119,6,shy,adjective,nhút nhát,/ʃaɪ/,The boy is shy.,Cậu bé rất nhút nhát.,,,4
+120,6,hardworking,adjective,chăm chỉ,/ˌhɑːdˈwɜːkɪŋ/,She is a hardworking student.,Cô ấy là một học sinh chăm chỉ.,,,5
+121,7,head,noun,đầu,/hed/,My head hurts.,Tôi bị đau đầu.,,,1
+122,7,arm,noun,cánh tay,/ɑːm/,Raise your right arm.,Hãy giơ cánh tay phải lên.,,,2
+123,7,hand,noun,bàn tay,/hænd/,Wash your hands before eating.,Hãy rửa tay trước khi ăn.,,,3
+124,7,leg,noun,chân,/leɡ/,He injured his leg.,Anh ấy bị thương ở chân.,,,4
+125,7,foot,noun,bàn chân,/fʊt/,My left foot hurts.,Bàn chân trái của tôi bị đau.,,,5
+126,8,tall,adjective,cao,/tɔːl/,My brother is tall.,Anh trai tôi cao.,,,1
+127,8,short,adjective,thấp,/ʃɔːt/,She is short and friendly.,Cô ấy thấp và thân thiện.,,,2
+128,8,thin,adjective,gầy,/θɪn/,He is tall and thin.,Anh ấy cao và gầy.,,,3
+129,8,handsome,adjective,đẹp trai,/ˈhænsəm/,The actor is handsome.,Nam diễn viên rất đẹp trai.,,,4
+130,8,beautiful,adjective,xinh đẹp,/ˈbjuːtɪfl/,She has a beautiful smile.,Cô ấy có nụ cười xinh đẹp.,,,5
+131,9,happy,adjective,vui vẻ,/ˈhæpi/,I feel happy today.,Hôm nay tôi cảm thấy vui.,,,1
+132,9,sad,adjective,buồn,/sæd/,She feels sad.,Cô ấy cảm thấy buồn.,,,2
+133,9,angry,adjective,tức giận,/ˈæŋɡri/,He is angry with me.,Anh ấy đang giận tôi.,,,3
+134,9,afraid,adjective,sợ hãi,/əˈfreɪd/,The child is afraid of the dark.,Đứa trẻ sợ bóng tối.,,,4
+135,9,excited,adjective,hào hứng,/ɪkˈsaɪtɪd/,We are excited about the trip.,Chúng tôi hào hứng về chuyến đi.,,,5
+136,11,carrot,noun,cà rốt,/ˈkærət/,I eat a carrot every day.,Tôi ăn một củ cà rốt mỗi ngày.,,,1
+137,11,potato,noun,khoai tây,/pəˈteɪtəʊ/,These potatoes are fresh.,Những củ khoai tây này rất tươi.,,,2
+138,11,tomato,noun,cà chua,/təˈmɑːtəʊ/,She puts tomato in the salad.,Cô ấy cho cà chua vào món salad.,,,3
+139,11,cabbage,noun,bắp cải,/ˈkæbɪdʒ/,We need some cabbage for dinner.,Chúng ta cần một ít bắp cải cho bữa tối.,,,4
+140,11,onion,noun,hành tây,/ˈʌnjən/,He cuts an onion.,Anh ấy cắt một củ hành tây.,,,5
+141,13,rice,noun,cơm,/raɪs/,I eat rice for lunch.,Tôi ăn cơm vào bữa trưa.,,,1
+142,13,bread,noun,bánh mì,/bred/,She has bread for breakfast.,Cô ấy ăn bánh mì vào bữa sáng.,,,2
+143,13,milk,noun,sữa,/mɪlk/,The child drinks milk every morning.,Đứa trẻ uống sữa mỗi sáng.,,,3
+144,13,water,noun,nước,/ˈwɔːtə(r)/,Please drink more water.,Hãy uống nhiều nước hơn.,,,4
+145,13,juice,noun,nước ép,/dʒuːs/,I would like some orange juice.,Tôi muốn một ít nước cam.,,,5
+146,14,Vietnam,noun,Việt Nam,/ˌvjetˈnɑːm/,I live in Vietnam.,Tôi sống ở Việt Nam.,,,1
+147,14,Japan,noun,Nhật Bản,/dʒəˈpæn/,Japan is in Asia.,Nhật Bản nằm ở châu Á.,,,2
+148,14,China,noun,Trung Quốc,/ˈtʃaɪnə/,China is a large country.,Trung Quốc là một quốc gia rộng lớn.,,,3
+149,14,France,noun,Pháp,/frɑːns/,Paris is in France.,Paris nằm ở Pháp.,,,4
+150,14,Thailand,noun,Thái Lan,/ˈtaɪlænd/,Thailand is near Vietnam.,Thái Lan ở gần Việt Nam.,,,5
+151,15,price,noun,giá,/praɪs/,What is the price of this shirt?,Chiếc áo này giá bao nhiêu?,,,1
+152,15,shop,noun,cửa hàng,/ʃɒp/,This shop is open today.,Cửa hàng này hôm nay mở cửa.,,,2
+153,15,buy,verb,mua,/baɪ/,I want to buy a new jacket.,Tôi muốn mua một chiếc áo khoác mới.,,,3
+154,15,sell,verb,bán,/sel/,They sell clothes here.,Họ bán quần áo ở đây.,,,4
+155,15,money,noun,tiền,/ˈmʌni/,I do not have enough money.,Tôi không có đủ tiền.,,,5
+156,16,healthy,adjective,khỏe mạnh,/ˈhelθi/,Eating vegetables keeps us healthy.,Ăn rau giúp chúng ta khỏe mạnh.,,,1
+157,16,sick,adjective,bị ốm,/sɪk/,He is sick today.,Hôm nay anh ấy bị ốm.,,,2
+158,16,medicine,noun,thuốc,/ˈmedɪsn/,Take this medicine after lunch.,Hãy uống thuốc này sau bữa trưa.,,,3
+159,16,hospital,noun,bệnh viện,/ˈhɒspɪtl/,She works at a hospital.,Cô ấy làm việc tại một bệnh viện.,,,4
+160,16,exercise,noun,bài tập thể dục,/ˈeksəsaɪz/,Exercise is good for your health.,Tập thể dục tốt cho sức khỏe.,,,5
