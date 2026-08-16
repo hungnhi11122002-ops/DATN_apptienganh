@@ -174,7 +174,7 @@ class HocTap : Fragment() {
 
             Topic(
                 topic_name = "Ngoại hình",
-                description = "25 từ",
+                description = "5 từ",
                 image_description = R.drawable.ic_ngoaihinh,
                 isCompleted = false,
                 topic_id = 8
