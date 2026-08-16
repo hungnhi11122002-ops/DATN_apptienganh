@@ -16,6 +16,8 @@ import com.example.EnglishWithStork.databinding.FragmentFlashCardBinding
 import com.example.EnglishWithStork.util.EnglishTtsManager
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import coil3.load
+import coil3.request.placeholder
 
 class FlashCardFragment : Fragment() {
 
@@ -209,9 +211,9 @@ class FlashCardFragment : Fragment() {
         vocabulary: VocabularyEntity
     ) {
 
-        val imageName = vocabulary.imageName
+        val publicId = vocabulary.imageName
 
-        if (imageName.isNullOrBlank()) {
+        if (publicId.isNullOrBlank()) {
 
             binding.imgWord.setImageResource(
                 R.drawable.ic_flashcard
@@ -220,22 +222,20 @@ class FlashCardFragment : Fragment() {
             return
         }
 
-        val resourceId =
-            resources.getIdentifier(
-                imageName,
-                "drawable",
-                requireContext().packageName
+        val imageUrl =
+            "https://res.cloudinary.com/" +
+                    "$CLOUDINARY_CLOUD_NAME/" +
+                    "image/upload/" +
+                    "c_limit,w_700,f_auto,q_auto/" +
+                    publicId
+
+        binding.imgWord.load(imageUrl) {
+
+            placeholder(
+                R.drawable.ic_flashcard
             )
 
-        if (resourceId != 0) {
-
-            binding.imgWord.setImageResource(
-                resourceId
-            )
-
-        } else {
-
-            binding.imgWord.setImageResource(
+            error(
                 R.drawable.ic_flashcard
             )
         }
@@ -294,6 +294,9 @@ class FlashCardFragment : Fragment() {
     }
 
     companion object {
+
+        private const val CLOUDINARY_CLOUD_NAME =
+            "aus6sa62"
 
         private const val ARG_TOPIC_ID =
             "topic_id"

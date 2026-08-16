@@ -24,9 +24,9 @@ id,topic_id,english,word_class,vietnamese,phonetic,example_en,example_vi,image_n
 23,2,granddaughter,noun,cháu gái,/ˈɡrændɔːtə(r)/,Her granddaughter loves music.,Cháu gái của bà ấy thích âm nhạc.,,,23
 24,2,relative,noun,"họ hàng, người thân",/ˈrelətɪv/,Many relatives came to the party.,Nhiều người thân đã đến bữa tiệc.,,,24
 25,2,twins,noun,cặp song sinh,/twɪnz/,The twins look very similar.,Cặp song sinh trông rất giống nhau.,,,25
-26,3,doctor,noun,bác sĩ,/ˈdɒktə(r)/,The doctor works at a hospital.,Bác sĩ làm việc tại bệnh viện.,,,1
+26,3,doctor,noun,bác sĩ,/ˈdɒktə(r)/,The doctor works at a hospital.,Bác sĩ làm việc tại bệnh viện.,026_doctor,,1
 27,3,nurse,noun,"y tá, điều dưỡng",/nɜːs/,The nurse takes care of the patient.,Y tá chăm sóc bệnh nhân.,,,2
-28,3,teacher,noun,giáo viên,/ˈtiːtʃə(r)/,My teacher teaches English.,Giáo viên của tôi dạy tiếng Anh.,,,3
+28,3,teacher,noun,giáo viên,/ˈtiːtʃə(r)/,My teacher teaches English.,Giáo viên của tôi dạy tiếng Anh.,028_teacher,,3
 29,3,engineer,noun,kỹ sư,/ˌendʒɪˈnɪə(r)/,My brother wants to be an engineer.,Anh trai tôi muốn trở thành kỹ sư.,,,4
 30,3,farmer,noun,nông dân,/ˈfɑːmə(r)/,The farmer works on the farm.,Người nông dân làm việc ở trang trại.,,,5
 31,3,driver,noun,tài xế,/ˈdraɪvə(r)/,The driver drives a bus every day.,Tài xế lái xe buýt mỗi ngày.,,,6
@@ -49,8 +49,8 @@ id,topic_id,english,word_class,vietnamese,phonetic,example_en,example_vi,image_n
 48,3,electrician,noun,thợ điện,/ɪˌlekˈtrɪʃn/,The electrician fixes the lights.,Thợ điện sửa hệ thống đèn.,,,23
 49,3,shop assistant,noun,nhân viên bán hàng,/ˈʃɒp əsɪstənt/,The shop assistant helps the customers.,Nhân viên bán hàng giúp đỡ khách hàng.,,,24
 50,3,accountant,noun,kế toán,/əˈkaʊntənt/,The accountant works with numbers.,Kế toán làm việc với các con số.,,,25
-51,10,apple,noun,quả táo,/ˈæpl/,I eat an apple every morning.,Tôi ăn một quả táo mỗi sáng.,,,1
-52,10,banana,noun,quả chuối,/bəˈnɑːnə/,She eats a banana after breakfast.,Cô ấy ăn một quả chuối sau bữa sáng.,,,2
+51,10,apple,noun,quả táo,/ˈæpl/,I eat an apple every morning.,Tôi ăn một quả táo mỗi sáng.,051_apple,,1
+52,10,banana,noun,quả chuối,/bəˈnɑːnə/,She eats a banana after breakfast.,Cô ấy ăn một quả chuối sau bữa sáng.,052_banana,,2
 53,10,orange,noun,quả cam,/ˈɒrɪndʒ/,This orange is very sweet.,Quả cam này rất ngọt.,,,3
 54,10,mango,noun,quả xoài,/ˈmæŋɡəʊ/,Mango is my favorite fruit.,Xoài là loại trái cây yêu thích của tôi.,,,4
 55,10,grape,noun,quả nho,/ɡreɪp/,These grapes are fresh.,Những quả nho này rất tươi.,,,5
@@ -74,11 +74,11 @@ id,topic_id,english,word_class,vietnamese,phonetic,example_en,example_vi,image_n
 73,10,pomegranate,noun,quả lựu,/ˈpɒmɪɡrænɪt/,The pomegranate has many seeds.,Quả lựu có nhiều hạt.,,,23
 74,10,grapefruit,noun,quả bưởi chùm,/ˈɡreɪpfruːt/,Grapefruit has a slightly bitter taste.,Bưởi chùm có vị hơi đắng.,,,24
 75,10,dragon fruit,noun,quả thanh long,/ˈdræɡən fruːt/,Dragon fruit is popular in Vietnam.,Thanh long rất phổ biến ở Việt Nam.,,,25
-76,12,dog,noun,con chó,/dɒɡ/,My dog likes to run in the park.,Con chó của tôi thích chạy trong công viên.,,,1
-77,12,cat,noun,con mèo,/kæt/,The cat is sleeping on the sofa.,Con mèo đang ngủ trên ghế sofa.,,,2
+76,12,dog,noun,con chó,/dɒɡ/,My dog likes to run in the park.,Con chó của tôi thích chạy trong công viên.,076_dog,,1
+77,12,cat,noun,con mèo,/kæt/,The cat is sleeping on the sofa.,Con mèo đang ngủ trên ghế sofa.,077_cat,,2
 78,12,bird,noun,con chim,/bɜːd/,The bird is singing in the tree.,Con chim đang hót trên cây.,,,3
 79,12,fish,noun,con cá,/fɪʃ/,The fish swims in the water.,Con cá bơi trong nước.,,,4
-80,12,horse,noun,con ngựa,/hɔːs/,The horse runs very fast.,Con ngựa chạy rất nhanh.,,,5
+80,12,horse,noun,con ngựa,/hɔːs/,The horse runs very fast.,Con ngựa chạy rất nhanh.,080_horse,,5
 81,12,cow,noun,con bò,/kaʊ/,The cow eats grass.,Con bò ăn cỏ.,,,6
 82,12,pig,noun,"con lợn, con heo",/pɪɡ/,The pig lives on the farm.,Con lợn sống ở trang trại.,,,7
 83,12,chicken,noun,con gà,/ˈtʃɪkɪn/,The chicken is looking for food.,Con gà đang tìm thức ăn.,,,8
@@ -104,7 +104,7 @@ id,topic_id,english,word_class,vietnamese,phonetic,example_en,example_vi,image_n
 103,1,three,number,ba,/θriː/,There are three apples.,Có ba quả táo.,,,3
 104,1,plus,preposition,cộng,/plʌs/,Two plus three is five.,Hai cộng ba bằng năm.,,,4
 105,1,minus,preposition,trừ,/ˈmaɪnəs/,Five minus two is three.,Năm trừ hai bằng ba.,,,5
-106,4,sunny,adjective,có nắng,/ˈsʌni/,It is sunny today.,Hôm nay trời có nắng.,,,1
+106,4,sunny,adjective,có nắng,/ˈsʌni/,It is sunny today.,Hôm nay trời có nắng.,106_sunny,,1
 107,4,rainy,adjective,có mưa,/ˈreɪni/,It is rainy this morning.,Sáng nay trời có mưa.,,,2
 108,4,cloudy,adjective,nhiều mây,/ˈklaʊdi/,The sky is cloudy.,Bầu trời nhiều mây.,,,3
 109,4,windy,adjective,có gió,/ˈwɪndi/,It is windy outside.,Ngoài trời có gió.,,,4
@@ -134,7 +134,7 @@ id,topic_id,english,word_class,vietnamese,phonetic,example_en,example_vi,image_n
 133,9,angry,adjective,tức giận,/ˈæŋɡri/,He is angry with me.,Anh ấy đang giận tôi.,,,3
 134,9,afraid,adjective,sợ hãi,/əˈfreɪd/,The child is afraid of the dark.,Đứa trẻ sợ bóng tối.,,,4
 135,9,excited,adjective,hào hứng,/ɪkˈsaɪtɪd/,We are excited about the trip.,Chúng tôi hào hứng về chuyến đi.,,,5
-136,11,carrot,noun,cà rốt,/ˈkærət/,I eat a carrot every day.,Tôi ăn một củ cà rốt mỗi ngày.,,,1
+136,11,carrot,noun,cà rốt,/ˈkærət/,I eat a carrot every day.,Tôi ăn một củ cà rốt mỗi ngày.,136_carrot,,1
 137,11,potato,noun,khoai tây,/pəˈteɪtəʊ/,These potatoes are fresh.,Những củ khoai tây này rất tươi.,,,2
 138,11,tomato,noun,cà chua,/təˈmɑːtəʊ/,She puts tomato in the salad.,Cô ấy cho cà chua vào món salad.,,,3
 139,11,cabbage,noun,bắp cải,/ˈkæbɪdʒ/,We need some cabbage for dinner.,Chúng ta cần một ít bắp cải cho bữa tối.,,,4
@@ -144,7 +144,7 @@ id,topic_id,english,word_class,vietnamese,phonetic,example_en,example_vi,image_n
 143,13,milk,noun,sữa,/mɪlk/,The child drinks milk every morning.,Đứa trẻ uống sữa mỗi sáng.,,,3
 144,13,water,noun,nước,/ˈwɔːtə(r)/,Please drink more water.,Hãy uống nhiều nước hơn.,,,4
 145,13,juice,noun,nước ép,/dʒuːs/,I would like some orange juice.,Tôi muốn một ít nước cam.,,,5
-146,14,Vietnam,noun,Việt Nam,/ˌvjetˈnɑːm/,I live in Vietnam.,Tôi sống ở Việt Nam.,,,1
+146,14,Vietnam,noun,Việt Nam,/ˌvjetˈnɑːm/,I live in Vietnam.,Tôi sống ở Việt Nam.,146_vietnam,,1
 147,14,Japan,noun,Nhật Bản,/dʒəˈpæn/,Japan is in Asia.,Nhật Bản nằm ở châu Á.,,,2
 148,14,China,noun,Trung Quốc,/ˈtʃaɪnə/,China is a large country.,Trung Quốc là một quốc gia rộng lớn.,,,3
 149,14,France,noun,Pháp,/frɑːns/,Paris is in France.,Paris nằm ở Pháp.,,,4
