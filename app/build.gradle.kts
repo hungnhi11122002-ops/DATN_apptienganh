@@ -1,7 +1,6 @@
 plugins {
     alias(libs.plugins.android.application)
-    //them plugin
-    id("com.google.devtools.ksp") version "2.3.9"
+    id("com.google.devtools.ksp")
 }
 android {
     namespace = "com.example.EnglishWithStork"
@@ -57,8 +56,8 @@ dependencies {
     implementation("androidx.room:room-runtime:$roomVersion")
     implementation("androidx.room:room-ktx:$roomVersion")
     ksp("androidx.room:room-compiler:$roomVersion")
-    implementation("io.coil-kt.coil3:coil:3.5.0")
-    implementation("io.coil-kt.coil3:coil-network-okhttp:3.5.0")
+    implementation("io.coil-kt.coil3:coil:3.3.0")
+    implementation("io.coil-kt.coil3:coil-network-okhttp:3.3.0")
 }
 
 ksp {

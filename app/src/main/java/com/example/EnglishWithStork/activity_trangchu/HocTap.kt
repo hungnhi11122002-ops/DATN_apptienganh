@@ -32,7 +32,6 @@ class HocTap : Fragment() {
             container,
             false
         )
-
         return binding.root
     }
 
@@ -46,10 +45,7 @@ class HocTap : Fragment() {
         setupTopics()
     }
 
-    /**
-     * RecyclerView phía trên:
-     * FlashCard, Kiểm tra, Ôn tập.
-     */
+
     private fun setupHocTapOptions() {
 
         val listHocTapOptions = listOf(
@@ -97,17 +93,11 @@ class HocTap : Fragment() {
                         openFlashCard()
                     }
 
-                    "Từ điển" -> {
-                        // Sau này xử lý từ điển
-                    }
+                    "Từ điển" -> {}
 
-                    "Kiểm tra" -> {
-                        // Sau này mở màn hình kiểm tra
-                    }
+                    "Kiểm tra" -> {}
 
-                    "Ôn tập" -> {
-                        // Sau này mở màn hình ôn tập
-                    }
+                    "Ôn tập" -> {}
                 }
             }
 
@@ -115,9 +105,6 @@ class HocTap : Fragment() {
         }
     }
 
-    /**
-     * RecyclerView danh sách 16 chủ đề.
-     */
     private fun setupTopics() {
 
         val listTopics = listOf(
@@ -286,9 +273,6 @@ class HocTap : Fragment() {
             .commit()
     }
 
-    /**
-     * Mở màn hình danh sách từ tương ứng với topic_id.
-     */
     private fun openVocabularyList(
         topic: Topic
     ) {
