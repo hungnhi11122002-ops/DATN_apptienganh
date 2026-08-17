@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/stork_blue_light"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="20dp"
+        android:paddingTop="16dp"
+        android:paddingEnd="20dp"
+        android:paddingBottom="24dp">
+
+        <ImageView
+            android:id = "@+id/slogan_stork"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="-20dp"
+            android:background="@drawable/slogan_stork"
+            android:layout_width="300dp"
+            android:layout_height="150dp"
+            />
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-40dp"
+            android:text="Ôn tập"
+            android:textColor="@color/stork_blue_dark"
+            android:textSize="38sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvSubtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:text="Vào là làm bài ngay"
+            android:textColor="@color/stork_blue_dark"
+            android:textSize="17sp" />
+
+
+        <!-- CARD CÂU HỎI -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardQuestion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="22dp"
+            app:cardBackgroundColor="@android:color/white"
+            app:cardCornerRadius="22dp"
+            app:cardElevation="5dp"
+            app:strokeColor="#E2ECF6"
+            app:strokeWidth="1dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="18dp">
+
+                <!-- Câu số + loại câu hỏi -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tvQuestionNumber"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_question_badge"
+                        android:paddingStart="16dp"
+                        android:paddingTop="8dp"
+                        android:paddingEnd="16dp"
+                        android:paddingBottom="8dp"
+                        android:text="Câu 1 / 10"
+                        android:textColor="@color/stork_blue"
+                        android:textSize="17sp"
+                        android:textStyle="bold" />
+
+                    <Space
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:id="@+id/tvQuestionType"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_question_badge"
+                        android:paddingStart="14dp"
+                        android:paddingTop="8dp"
+                        android:paddingEnd="14dp"
+                        android:paddingBottom="8dp"
+                        android:text="Trắc nghiệm"
+                        android:textColor="@color/stork_blue"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+
+                <!-- Nội dung câu hỏi -->
+                <TextView
+                    android:id="@+id/tvQuestion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:text="Chọn từ đúng với nghĩa: “quả táo”"
+                    android:textColor="#102142"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+
+
+                <!-- KHU VỰC TRẮC NGHIỆM -->
+                <LinearLayout
+                    android:id="@+id/layoutMultipleChoice"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnAnswer1"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="58dp"
+                        android:text="apple"
+                        android:textAllCaps="false"
+                        android:textColor="#102142"
+                        android:textSize="18sp"
+                        app:cornerRadius="14dp"
+                        app:strokeColor="#D8E2EE"
+                        app:strokeWidth="1dp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnAnswer2"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="58dp"
+                        android:layout_marginTop="10dp"
+                        android:text="school"
+                        android:textAllCaps="false"
+                        android:textColor="#102142"
+                        android:textSize="18sp"
+                        app:cornerRadius="14dp"
+                        app:strokeColor="#D8E2EE"
+                        app:strokeWidth="1dp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnAnswer3"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="58dp"
+                        android:layout_marginTop="10dp"
+                        android:text="teacher"
+                        android:textAllCaps="false"
+                        android:textColor="#102142"
+                        android:textSize="18sp"
+                        app:cornerRadius="14dp"
+                        app:strokeColor="#D8E2EE"
+                        app:strokeWidth="1dp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnAnswer4"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="58dp"
+                        android:layout_marginTop="10dp"
+                        android:text="family"
+                        android:textAllCaps="false"
+                        android:textColor="#102142"
+                        android:textSize="18sp"
+                        app:cornerRadius="14dp"
+                        app:strokeColor="#D8E2EE"
+                        app:strokeWidth="1dp" />
+
+                </LinearLayout>
+
+
+                <!-- KHU VỰC NHẬP ĐÁP ÁN -->
+                <!-- Dùng cho viết lại từ + điền từ -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layoutInputAnswer"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="22dp"
+                    android:visibility="gone"
+                    app:boxCornerRadiusBottomEnd="14dp"
+                    app:boxCornerRadiusBottomStart="14dp"
+                    app:boxCornerRadiusTopEnd="14dp"
+                    app:boxCornerRadiusTopStart="14dp"
+                    app:hintEnabled="true">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtAnswer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Nhập câu trả lời"
+                        android:padding="16dp"
+                        android:textSize="18sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+
+        <!-- TIẾN ĐỘ -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tiến độ"
+                android:textColor="#667085"
+                android:textSize="16sp" />
+
+            <ProgressBar
+                android:id="@+id/progressQuiz"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="0dp"
+                android:layout_height="8dp"
+                android:layout_marginStart="14dp"
+                android:layout_marginEnd="14dp"
+                android:layout_weight="1"
+                android:max="10"
+                android:progress="1"
+                android:progressTint="@color/stork_teal"
+                android:progressBackgroundTint="#D8E8F5" />
+
+            <TextView
+                android:id="@+id/tvProgress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1 / 10"
+                android:textColor="@color/stork_teal"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+
+        <!-- BUTTON -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSkip"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_marginEnd="7dp"
+                android:layout_weight="1"
+                android:text="Bỏ qua"
+                android:textAllCaps="false"
+                android:textColor="@color/stork_teal"
+                android:textSize="18sp"
+                app:cornerRadius="15dp"
+                app:strokeColor="@color/stork_teal"
+                app:strokeWidth="1dp" />
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnNext"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="7dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/stork_teal"
+                android:text="Câu tiếp theo"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                app:cornerRadius="15dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

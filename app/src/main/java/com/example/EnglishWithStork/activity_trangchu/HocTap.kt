@@ -89,15 +89,13 @@ class HocTap : Fragment() {
 
                 when (option.name) {
 
-                    "FlashCard" -> {
-                        openFlashCard()
-                    }
+                    "FlashCard" -> {openFlashCard()}
 
                     "Từ điển" -> {}
 
                     "Kiểm tra" -> {}
 
-                    "Ôn tập" -> {}
+                    "Ôn tập" -> {openOnTap()}
                 }
             }
 
@@ -270,6 +268,20 @@ class HocTap : Fragment() {
                 fragment
             )
             .addToBackStack("flash_card")
+            .commit()
+    }
+
+    private fun openOnTap() {
+
+        val fragment = OnTapFragment()
+
+        parentFragmentManager
+            .beginTransaction()
+            .replace(
+                R.id.frame_layout,
+                fragment
+            )
+            .addToBackStack("on_tap")
             .commit()
     }
 
