@@ -93,8 +93,23 @@ class TrangChu : Fragment() {
             quick_practise("Kiểm tra", "Kiểm tra kiến thức",R.drawable.ic_exam)
         )
         binding.rvItemLuyentap.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-        binding.rvItemLuyentap.adapter = PractiseAdapter(listquick_practise)
+        binding.rvItemLuyentap.adapter = PractiseAdapter(
+            listquick_practise
+        ) { selectedPractise ->
+
+            when (selectedPractise.name) {
+
+                "Ôn tập" -> {
+                    openReviewTopics()
+                }
+
+                "Kiểm tra" -> {
+
+                }
+            }
+        }
     }
+
 
     private fun openVocabularyList(topic: Topic) {
 
@@ -124,6 +139,20 @@ class TrangChu : Fragment() {
                 vocabListFragment
             )
             .addToBackStack("vocab_list")
+            .commit()
+    }
+
+    private fun openReviewTopics() {
+
+        val fragment = ReviewTopicFragment()
+
+        parentFragmentManager
+            .beginTransaction()
+            .replace(
+                R.id.frame_layout,
+                fragment
+            )
+            .addToBackStack("review_topics")
             .commit()
     }
 

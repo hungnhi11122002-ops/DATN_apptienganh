@@ -1,24 +1,23 @@
 package com.example.EnglishWithStork.activity_trangchu
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.EnglishWithStork.Models.Topic
-import com.example.EnglishWithStork.Models.hocTapOptions
 import com.example.EnglishWithStork.R
-import com.example.EnglishWithStork.UI.HocTapOptionsAdapter
 import com.example.EnglishWithStork.UI.TopicAdapter
-import com.example.EnglishWithStork.databinding.FragmentHocTapBinding
+import com.example.EnglishWithStork.activity_dangnhap
+import com.example.EnglishWithStork.databinding.FragmentReviewTopicBinding
 
-class HocTap : Fragment() {
+class ReviewTopicFragment : Fragment() {
 
-    private var _binding: FragmentHocTapBinding? = null
+    private var _binding: FragmentReviewTopicBinding? = null
 
-    private val binding: FragmentHocTapBinding
+    private val binding: FragmentReviewTopicBinding
         get() = _binding!!
 
     override fun onCreateView(
@@ -27,11 +26,12 @@ class HocTap : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        _binding = FragmentHocTapBinding.inflate(
+        _binding = FragmentReviewTopicBinding.inflate(
             inflater,
             container,
             false
         )
+
         return binding.root
     }
 
@@ -41,71 +41,16 @@ class HocTap : Fragment() {
     ) {
         super.onViewCreated(view, savedInstanceState)
 
-        setupHocTapOptions()
         setupTopics()
-    }
-
-
-    private fun setupHocTapOptions() {
-
-        val listHocTapOptions = listOf(
-
-            hocTapOptions(
-                name = "Từ điển",
-                description = "Tra cứu từ vựng online",
-                image_description = R.drawable.ic_dictionary
-            ),
-
-            hocTapOptions(
-                name = "FlashCard",
-                description = "Học từ vựng qua thẻ",
-                image_description = R.drawable.ic_flashcard
-            ),
-
-            hocTapOptions(
-                name = "Kiểm tra",
-                description = "Làm bài kiểm tra nhanh",
-                image_description = R.drawable.ic_exam
-            ),
-
-            hocTapOptions(
-                name = "Ôn tập",
-                description = "Ôn tập các từ đã học",
-                image_description = R.drawable.ic_ontap
-            )
-        )
-
-        binding.rvItemHoctapOptions.apply {
-
-            layoutManager = LinearLayoutManager(
-                requireContext(),
-                LinearLayoutManager.HORIZONTAL,
-                false
-            )
-
-            adapter = HocTapOptionsAdapter(
-                listHocTapOptions
-            ) { option ->
-
-                when (option.name) {
-
-                    "FlashCard" -> {openFlashCard()}
-
-                    "Từ điển" -> {}
-
-                    "Kiểm tra" -> {}
-
-                    "Ôn tập" -> {openReviewTopics()}
-                }
-            }
-
-            setHasFixedSize(true)
+        binding.btnBack.setOnClickListener {
+            parentFragmentManager.popBackStack()
         }
     }
 
     private fun setupTopics() {
 
         val listTopics = listOf(
+
             Topic(
                 topic_name = "Gia đình",
                 description = "25 từ",
@@ -121,6 +66,7 @@ class HocTap : Fragment() {
                 isCompleted = false,
                 topic_id = 3
             ),
+
             Topic(
                 topic_name = "Hoa quả",
                 description = "25 từ",
@@ -201,7 +147,6 @@ class HocTap : Fragment() {
                 topic_id = 11
             ),
 
-
             Topic(
                 topic_name = "Đồ ăn & Đồ uống",
                 description = "5 từ",
@@ -247,68 +192,21 @@ class HocTap : Fragment() {
                 listTopic = listTopics,
                 fullWidth = true
             ) { topic ->
-                openVocabularyList(topic)
+
+                openReview(topic)
             }
 
             setHasFixedSize(true)
         }
     }
 
-    private fun openFlashCard() {
+    private fun openReview(topic: Topic) {
 
-        val fragment = FlashCardFragment.newInstance(
-            topicId = 12,
-            topicName = "Động vật"
-        )
-
-        parentFragmentManager
-            .beginTransaction()
-            .replace(
-                R.id.frame_layout,
-                fragment
-            )
-            .addToBackStack("flash_card")
-            .commit()
-    }
-
-    private fun openOnTap() {
-
-        val fragment = OnTapFragment()
-
-        parentFragmentManager
-            .beginTransaction()
-            .replace(
-                R.id.frame_layout,
-                fragment
-            )
-            .addToBackStack("on_tap")
-            .commit()
-    }
-
-    private fun openReviewTopics() {
-
-        val fragment = ReviewTopicFragment()
-
-        parentFragmentManager
-            .beginTransaction()
-            .replace(
-                R.id.frame_layout,
-                fragment
-            )
-            .addToBackStack("review_topics")
-            .commit()
-    }
-
-    private fun openVocabularyList(
-        topic: Topic
-    ) {
-
-        // topic_id = 0 nghĩa là bạn chưa gán ID cho chủ đề.
         if (topic.topic_id <= 0) {
             return
         }
 
-        val fragment = VocabListFragment.newInstance(
+        val fragment = OnTapFragment.newInstance(
             topicId = topic.topic_id,
             topicName = topic.topic_name
         )
@@ -319,14 +217,15 @@ class HocTap : Fragment() {
                 R.id.frame_layout,
                 fragment
             )
-            .addToBackStack("vocab_list")
+            .addToBackStack("review_quiz")
             .commit()
     }
 
     override fun onDestroyView() {
-        binding.rvItemHoctapOptions.adapter = null
+
         binding.rvTopic.adapter = null
         _binding = null
+
         super.onDestroyView()
     }
 }

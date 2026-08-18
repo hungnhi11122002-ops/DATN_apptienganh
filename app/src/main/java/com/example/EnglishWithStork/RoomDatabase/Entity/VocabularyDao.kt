@@ -62,4 +62,14 @@ interface VocabularyDao {
     fun searchWords(
         keyword: String
     ): Flow<List<VocabularyEntity>>
+
+    @Query(
+        """
+    SELECT *
+    FROM vocabularies
+    WHERE sort_order BETWEEN 1 AND 3
+    ORDER BY topic_id ASC, sort_order ASC
+    """
+    )
+    suspend fun getReviewWords(): List<VocabularyEntity>
 }

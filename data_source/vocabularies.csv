@@ -121,7 +121,7 @@ id,topic_id,english,word_class,vietnamese,phonetic,example_en,example_vi,image_n
 120,6,hardworking,adjective,chăm chỉ,/ˌhɑːdˈwɜːkɪŋ/,She is a hardworking student.,Cô ấy là một học sinh chăm chỉ.,,,5
 121,7,head,noun,đầu,/hed/,My head hurts.,Tôi bị đau đầu.,,,1
 122,7,arm,noun,cánh tay,/ɑːm/,Raise your right arm.,Hãy giơ cánh tay phải lên.,,,2
-123,7,hand,noun,bàn tay,/hænd/,Wash your hands before eating.,Hãy rửa tay trước khi ăn.,,,3
+123,7,hand,noun,bàn tay,/hænd/,Raise your hand.,Hãy giơ tay lên.,,,3
 124,7,leg,noun,chân,/leɡ/,He injured his leg.,Anh ấy bị thương ở chân.,,,4
 125,7,foot,noun,bàn chân,/fʊt/,My left foot hurts.,Bàn chân trái của tôi bị đau.,,,5
 126,8,tall,adjective,cao,/tɔːl/,My brother is tall.,Anh trai tôi cao.,,,1
@@ -135,7 +135,7 @@ id,topic_id,english,word_class,vietnamese,phonetic,example_en,example_vi,image_n
 134,9,afraid,adjective,sợ hãi,/əˈfreɪd/,The child is afraid of the dark.,Đứa trẻ sợ bóng tối.,,,4
 135,9,excited,adjective,hào hứng,/ɪkˈsaɪtɪd/,We are excited about the trip.,Chúng tôi hào hứng về chuyến đi.,,,5
 136,11,carrot,noun,cà rốt,/ˈkærət/,I eat a carrot every day.,Tôi ăn một củ cà rốt mỗi ngày.,136_carrot,,1
-137,11,potato,noun,khoai tây,/pəˈteɪtəʊ/,These potatoes are fresh.,Những củ khoai tây này rất tươi.,,,2
+137,11,potato,noun,khoai tây,/pəˈteɪtəʊ/,This potato is fresh.,Củ khoai tây này rất tươi.,,,2
 138,11,tomato,noun,cà chua,/təˈmɑːtəʊ/,She puts tomato in the salad.,Cô ấy cho cà chua vào món salad.,,,3
 139,11,cabbage,noun,bắp cải,/ˈkæbɪdʒ/,We need some cabbage for dinner.,Chúng ta cần một ít bắp cải cho bữa tối.,,,4
 140,11,onion,noun,hành tây,/ˈʌnjən/,He cuts an onion.,Anh ấy cắt một củ hành tây.,,,5

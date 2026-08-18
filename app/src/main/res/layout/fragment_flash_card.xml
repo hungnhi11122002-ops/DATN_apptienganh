@@ -25,10 +25,9 @@
             android:id="@+id/btnBack"
             android:layout_width="44dp"
             android:layout_height="44dp"
-            android:background="@android:color/transparent"
-            android:padding="10dp"
-            android:src="@drawable/ic_backward"
-            android:contentDescription="Quay lại" />
+            android:background="@drawable/ic_backward"
+            android:contentDescription="Quay lại"
+            android:padding="10dp" />
 
         <TextView
             android:id="@+id/tvTitle"
