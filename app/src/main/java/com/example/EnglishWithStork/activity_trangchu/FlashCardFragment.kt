@@ -17,6 +17,7 @@ import com.example.EnglishWithStork.util.EnglishTtsManager
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import coil3.load
+import android.util.Log
 import coil3.request.placeholder
 
 class FlashCardFragment : Fragment() {
@@ -211,9 +212,12 @@ class FlashCardFragment : Fragment() {
         vocabulary: VocabularyEntity
     ) {
 
-        val publicId = vocabulary.imageName
+        val publicId =
+            vocabulary.imageName
+                ?.trim()
+                .orEmpty()
 
-        if (publicId.isNullOrBlank()) {
+        if (publicId.isBlank()) {
 
             binding.imgWord.setImageResource(
                 R.drawable.ic_flashcard
@@ -226,19 +230,9 @@ class FlashCardFragment : Fragment() {
             "https://res.cloudinary.com/" +
                     "$CLOUDINARY_CLOUD_NAME/" +
                     "image/upload/" +
-                    "c_limit,w_700,f_auto,q_auto/" +
                     publicId
 
-        binding.imgWord.load(imageUrl) {
-
-            placeholder(
-                R.drawable.ic_flashcard
-            )
-
-            error(
-                R.drawable.ic_flashcard
-            )
-        }
+        binding.imgWord.load(imageUrl)
     }
 
     private fun flipCard() {

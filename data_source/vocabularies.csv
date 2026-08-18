@@ -76,29 +76,29 @@ id,topic_id,english,word_class,vietnamese,phonetic,example_en,example_vi,image_n
 75,10,dragon fruit,noun,quả thanh long,/ˈdræɡən fruːt/,Dragon fruit is popular in Vietnam.,Thanh long rất phổ biến ở Việt Nam.,,,25
 76,12,dog,noun,con chó,/dɒɡ/,My dog likes to run in the park.,Con chó của tôi thích chạy trong công viên.,076_dog,,1
 77,12,cat,noun,con mèo,/kæt/,The cat is sleeping on the sofa.,Con mèo đang ngủ trên ghế sofa.,077_cat,,2
-78,12,bird,noun,con chim,/bɜːd/,The bird is singing in the tree.,Con chim đang hót trên cây.,,,3
-79,12,fish,noun,con cá,/fɪʃ/,The fish swims in the water.,Con cá bơi trong nước.,,,4
+78,12,bird,noun,con chim,/bɜːd/,The bird is singing in the tree.,Con chim đang hót trên cây.,078_bird,,3
+79,12,fish,noun,con cá,/fɪʃ/,The fish swims in the water.,Con cá bơi trong nước.,079_fish,,4
 80,12,horse,noun,con ngựa,/hɔːs/,The horse runs very fast.,Con ngựa chạy rất nhanh.,080_horse,,5
-81,12,cow,noun,con bò,/kaʊ/,The cow eats grass.,Con bò ăn cỏ.,,,6
-82,12,pig,noun,"con lợn, con heo",/pɪɡ/,The pig lives on the farm.,Con lợn sống ở trang trại.,,,7
-83,12,chicken,noun,con gà,/ˈtʃɪkɪn/,The chicken is looking for food.,Con gà đang tìm thức ăn.,,,8
-84,12,duck,noun,con vịt,/dʌk/,The duck swims in the pond.,Con vịt bơi trong ao.,,,9
-85,12,sheep,noun,con cừu,/ʃiːp/,The sheep has white wool.,Con cừu có bộ lông màu trắng.,,,10
-86,12,goat,noun,con dê,/ɡəʊt/,The goat is eating leaves.,Con dê đang ăn lá cây.,,,11
-87,12,rabbit,noun,con thỏ,/ˈræbɪt/,The rabbit has long ears.,Con thỏ có đôi tai dài.,,,12
-88,12,mouse,noun,con chuột,/maʊs/,The mouse is under the table.,Con chuột ở dưới bàn.,,,13
-89,12,lion,noun,sư tử,/ˈlaɪən/,The lion is a strong animal.,Sư tử là một loài động vật mạnh mẽ.,,,14
-90,12,tiger,noun,hổ,/ˈtaɪɡə(r)/,The tiger has black stripes.,Con hổ có những sọc màu đen.,,,15
-91,12,elephant,noun,voi,/ˈelɪfənt/,The elephant has a long trunk.,Con voi có một chiếc vòi dài.,,,16
-92,12,monkey,noun,khỉ,/ˈmʌŋki/,The monkey is climbing a tree.,Con khỉ đang trèo cây.,,,17
-93,12,bear,noun,gấu,/beə(r)/,The bear is looking for food.,Con gấu đang tìm thức ăn.,,,18
-94,12,giraffe,noun,hươu cao cổ,/dʒəˈrɑːf/,The giraffe has a very long neck.,Hươu cao cổ có chiếc cổ rất dài.,,,19
-95,12,zebra,noun,ngựa vằn,/ˈzebrə/,The zebra has black and white stripes.,Ngựa vằn có các sọc đen và trắng.,,,20
-96,12,snake,noun,rắn,/sneɪk/,The snake moves through the grass.,Con rắn bò qua bãi cỏ.,,,21
-97,12,frog,noun,ếch,/frɒɡ/,The frog can jump very high.,Con ếch có thể nhảy rất cao.,,,22
-98,12,turtle,noun,rùa,/ˈtɜːtl/,The turtle moves slowly.,Con rùa di chuyển chậm.,,,23
-99,12,dolphin,noun,cá heo,/ˈdɒlfɪn/,The dolphin swims very fast.,Cá heo bơi rất nhanh.,,,24
-100,12,whale,noun,cá voi,/weɪl/,The whale lives in the ocean.,Cá voi sống ở đại dương.,,,25
+81,12,cow,noun,con bò,/kaʊ/,The cow eats grass.,Con bò ăn cỏ.,081_cow,,6
+82,12,pig,noun,"con lợn, con heo",/pɪɡ/,The pig lives on the farm.,Con lợn sống ở trang trại.,082_pig,,7
+83,12,chicken,noun,con gà,/ˈtʃɪkɪn/,The chicken is looking for food.,Con gà đang tìm thức ăn.,083_chicken,,8
+84,12,duck,noun,con vịt,/dʌk/,The duck swims in the pond.,Con vịt bơi trong ao.,084_duck,,9
+85,12,sheep,noun,con cừu,/ʃiːp/,The sheep has white wool.,Con cừu có bộ lông màu trắng.,085_sheep,,10
+86,12,goat,noun,con dê,/ɡəʊt/,The goat is eating leaves.,Con dê đang ăn lá cây.,086_goat,,11
+87,12,rabbit,noun,con thỏ,/ˈræbɪt/,The rabbit has long ears.,Con thỏ có đôi tai dài.,087_rabbit,,12
+88,12,mouse,noun,con chuột,/maʊs/,The mouse is under the table.,Con chuột ở dưới bàn.,088_mouse,,13
+89,12,lion,noun,sư tử,/ˈlaɪən/,The lion is a strong animal.,Sư tử là một loài động vật mạnh mẽ.,089_lion,,14
+90,12,tiger,noun,hổ,/ˈtaɪɡə(r)/,The tiger has black stripes.,Con hổ có những sọc màu đen.,090_tiger,,15
+91,12,elephant,noun,voi,/ˈelɪfənt/,The elephant has a long trunk.,Con voi có một chiếc vòi dài.,091_elephant,,16
+92,12,monkey,noun,khỉ,/ˈmʌŋki/,The monkey is climbing a tree.,Con khỉ đang trèo cây.,092_monkey,,17
+93,12,bear,noun,gấu,/beə(r)/,The bear is looking for food.,Con gấu đang tìm thức ăn.,093_bear,,18
+94,12,giraffe,noun,hươu cao cổ,/dʒəˈrɑːf/,The giraffe has a very long neck.,Hươu cao cổ có chiếc cổ rất dài.,094_giraffe,,19
+95,12,zebra,noun,ngựa vằn,/ˈzebrə/,The zebra has black and white stripes.,Ngựa vằn có các sọc đen và trắng.,095_zebra,,20
+96,12,snake,noun,rắn,/sneɪk/,The snake moves through the grass.,Con rắn bò qua bãi cỏ.,096_snake,,21
+97,12,frog,noun,ếch,/frɒɡ/,The frog can jump very high.,Con ếch có thể nhảy rất cao.,097_frog,,22
+98,12,turtle,noun,rùa,/ˈtɜːtl/,The turtle moves slowly.,Con rùa di chuyển chậm.,098_turtle,,23
+99,12,dolphin,noun,cá heo,/ˈdɒlfɪn/,The dolphin swims very fast.,Cá heo bơi rất nhanh.,099_dolphin,,24
+100,12,whale,noun,cá voi,/weɪl/,The whale lives in the ocean.,Cá voi sống ở đại dương.,100_whale,,25
 101,1,one,number,một,/wʌn/,I have one book.,Tôi có một quyển sách.,,,1
 102,1,two,number,hai,/tuː/,She has two cats.,Cô ấy có hai con mèo.,,,2
 103,1,three,number,ba,/θriː/,There are three apples.,Có ba quả táo.,,,3
