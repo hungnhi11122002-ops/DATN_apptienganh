@@ -24,10 +24,10 @@
 
             <ImageButton
                 android:id="@+id/btnBack"
-                android:layout_width="44dp"
-                android:layout_height="44dp"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
                 android:layout_gravity="start|center_vertical"
-                android:background="@drawable/ic_backward"
+                android:background="@drawable/ic_blue_arrow_black"
                 android:contentDescription="Quay lại"
                 android:padding="10dp" />
 
@@ -51,7 +51,7 @@
             android:layout_marginTop="2dp"
             android:text="Chủ đề: Gia đình"
             android:textColor="#667085"
-            android:textSize="16sp" />
+            android:textSize="22sp" />
 
         <LinearLayout
             android:layout_width="match_parent"

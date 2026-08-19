@@ -45,7 +45,6 @@ class HocTap : Fragment() {
         setupTopics()
     }
 
-
     private fun setupHocTapOptions() {
 
         val listHocTapOptions = listOf(
@@ -91,7 +90,7 @@ class HocTap : Fragment() {
 
                     "FlashCard" -> {openFlashCard()}
 
-                    "Từ điển" -> {}
+                    "Từ điển" -> {openDictionary()}
 
                     "Kiểm tra" -> {}
 
@@ -320,6 +319,18 @@ class HocTap : Fragment() {
                 fragment
             )
             .addToBackStack("vocab_list")
+            .commit()
+    }
+
+    private fun openDictionary() {
+
+        parentFragmentManager
+            .beginTransaction()
+            .replace(
+                R.id.frame_layout,
+                DictionaryFragment()
+            )
+            .addToBackStack(null)
             .commit()
     }
 
