@@ -9,18 +9,12 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface SavedVocabularyDao {
 
-    /**
-     * IGNORE giúp không bị crash nếu người dùng bấm lưu
-     * một từ đã có trong sổ tay.
-     */
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertSavedVocabulary(
         savedVocabulary: SavedVocabularyEntity
     ): Long
 
-    /**
-     * Xóa một từ khỏi sổ tay của đúng người dùng.
-     */
+
     @Query(
         """
         DELETE FROM saved_vocabularies
@@ -33,9 +27,6 @@ interface SavedVocabularyDao {
         vocabularyId: Int
     )
 
-    /**
-     * Lấy ID các từ đã lưu để đổi icon bookmark.
-     */
     @Query(
         """
         SELECT vocabulary_id
@@ -47,9 +38,6 @@ interface SavedVocabularyDao {
         userId: Int
     ): Flow<List<Int>>
 
-    /**
-     * Lấy đầy đủ dữ liệu các từ trong sổ tay.
-     */
     @Query(
         """
         SELECT vocabularies.*

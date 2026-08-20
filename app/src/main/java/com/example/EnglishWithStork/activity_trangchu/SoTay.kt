@@ -20,6 +20,7 @@ import com.example.EnglishWithStork.databinding.FragmentSoTayBinding
 import com.example.EnglishWithStork.util.EnglishTtsManager
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import androidx.core.widget.doAfterTextChanged
 
 class SoTay : Fragment() {
 
@@ -40,6 +41,7 @@ class SoTay : Fragment() {
             EnglishTtsManager
 
     private var userId: Int = -1
+    private var allSavedVocabularies: List<VocabularyEntity> = emptyList()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -82,6 +84,7 @@ class SoTay : Fragment() {
             )
 
         setupRecyclerView()
+        setupSearch()
         observeSavedVocabularies()
     }
 
@@ -119,6 +122,67 @@ class SoTay : Fragment() {
 
             setHasFixedSize(true)
         }
+    }
+
+    private fun setupSearch() {
+
+        binding.edt1.doAfterTextChanged { text ->
+
+            filterSavedVocabulary(
+                text?.toString().orEmpty()
+            )
+        }
+    }
+
+    private fun filterSavedVocabulary(
+        query: String
+    ) {
+
+        val keyword =
+            query.trim()
+
+        val filteredList =
+            if (keyword.isEmpty()) {
+
+                allSavedVocabularies
+
+            } else {
+
+                allSavedVocabularies.filter { vocabulary ->
+
+                    vocabulary.english.contains(
+                        keyword,
+                        ignoreCase = true
+                    ) ||
+                            vocabulary.vietnamese.contains(
+                                keyword,
+                                ignoreCase = true
+                            )
+                }
+            }
+
+        vocabularyAdapter.submitList(
+            filteredList
+        )
+
+        val isEmpty =
+            filteredList.isEmpty()
+
+        if (isEmpty) {
+
+            binding.tvEmpty.text =
+                if (keyword.isEmpty()) {
+                    "Bạn chưa lưu từ nào vào sổ tay"
+                } else {
+                    "Không tìm thấy từ \"$keyword\" trong sổ tay"
+                }
+        }
+
+        binding.tvEmpty.isVisible =
+            isEmpty
+
+        binding.rvSavedVocabulary.isVisible =
+            !isEmpty
     }
 
     private fun speakVocabulary(
@@ -182,20 +246,14 @@ class SoTay : Fragment() {
     }
 
     private fun observeSavedVocabularies() {
-
         if (userId <= 0) {
-            binding.tvEmpty.text =
-                "Vui lòng đăng nhập để sử dụng sổ tay"
-
+            binding.tvEmpty.text = "Vui lòng đăng nhập để sử dụng sổ tay"
             binding.tvEmpty.isVisible = true
             binding.rvSavedVocabulary.isVisible = false
             binding.tvSavedCount.text = "0 từ đã lưu"
-
             return
         }
-
         viewLifecycleOwner.lifecycleScope.launch {
-
             viewLifecycleOwner.repeatOnLifecycle(
                 Lifecycle.State.STARTED
             ) {
@@ -205,43 +263,31 @@ class SoTay : Fragment() {
                         userId
                     )
                     .collectLatest { vocabularies ->
-
-                        vocabularyAdapter.submitList(
-                            vocabularies
-                        )
-
+                        allSavedVocabularies = vocabularies
                         vocabularyAdapter
                             .setSavedVocabularyIds(
                                 vocabularies
                                     .map { it.id }
                                     .toSet()
                             )
-
                         binding.tvSavedCount.text =
                             "${vocabularies.size} từ đã lưu"
-
-                        val isEmpty =
-                            vocabularies.isEmpty()
-
-                        binding.tvEmpty.isVisible =
-                            isEmpty
-
-                        binding.rvSavedVocabulary.isVisible =
-                            !isEmpty
-                    }
+                        filterSavedVocabulary(
+                            binding.edt1.text
+                                ?.toString()
+                                .orEmpty()
+                        )
+                }
             }
         }
     }
 
     override fun onDestroyView() {
-
         if (::ttsManager.isInitialized) {
             ttsManager.release()
         }
-
         binding.rvSavedVocabulary.adapter = null
         _binding = null
-
         super.onDestroyView()
     }
 }

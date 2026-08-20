@@ -21,31 +21,21 @@ import com.example.EnglishWithStork.databinding.FragmentVocabListBinding
 import com.example.EnglishWithStork.util.EnglishTtsManager
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import androidx.core.widget.doAfterTextChanged
 
 class VocabListFragment : Fragment() {
 
-    private var _binding:
-            FragmentVocabListBinding? = null
-
-    private val binding:
-            FragmentVocabListBinding
-        get() = _binding!!
-
-    private lateinit var vocabularyAdapter:
-            VocabularyAdapter
-
-    private lateinit var database:
-            AppDatabase
-
-    private lateinit var sessionManager:
-            SessionManager
-
-    private lateinit var ttsManager:
-            EnglishTtsManager
-
+    private var _binding: FragmentVocabListBinding? = null
+    private val binding: FragmentVocabListBinding
+            get() = _binding!!
+    private lateinit var vocabularyAdapter: VocabularyAdapter
+    private lateinit var database: AppDatabase
+    private lateinit var sessionManager: SessionManager
+    private lateinit var ttsManager: EnglishTtsManager
     private var topicId: Int = -1
     private var topicName: String = ""
     private var userId: Int = -1
+    private var allTopicVocabularies: List<VocabularyEntity> = emptyList()
 
     override fun onCreate(
         savedInstanceState: Bundle?
@@ -107,6 +97,7 @@ class VocabListFragment : Fragment() {
 
         setupHeader()
         setupRecyclerView()
+        setupSearch()
         observeData()
     }
 
@@ -153,6 +144,52 @@ class VocabListFragment : Fragment() {
 
             setHasFixedSize(true)
         }
+    }
+
+    private fun setupSearch() {
+        binding.edtSearchVocabulary
+            .doAfterTextChanged { text ->
+                filterVocabulary(
+                    text?.toString().orEmpty()
+                )
+            }
+    }
+
+    private fun filterVocabulary(
+        query: String
+    ) {
+        val keyword =
+            query.trim()
+        val filteredList =
+            if (keyword.isEmpty()) {
+                allTopicVocabularies
+            } else {
+                allTopicVocabularies.filter { vocabulary ->
+
+                    vocabulary.english.contains(
+                        keyword,
+                        ignoreCase = true
+                    ) ||
+                            vocabulary.vietnamese.contains(
+                                keyword,
+                                ignoreCase = true
+                            )
+                }
+            }
+        vocabularyAdapter.submitList(
+            filteredList
+        )
+        val isEmpty =
+            filteredList.isEmpty()
+        if (isEmpty) {
+            binding.tvEmpty.text =
+                if (keyword.isEmpty())
+                    {"Chủ đề này chưa có từ vựng"
+                }else
+                    {"Không tìm thấy từ \"$keyword\""}
+        }
+        binding.tvEmpty.isVisible = isEmpty
+        binding.rvVocabulary.isVisible = !isEmpty
     }
 
     private fun speakVocabulary(
@@ -211,7 +248,6 @@ class VocabListFragment : Fragment() {
                             vocabularyId = vocabulary.id
                         )
                     )
-
                 Toast.makeText(
                     requireContext(),
                     "Đã lưu vào sổ tay",
@@ -237,52 +273,28 @@ class VocabListFragment : Fragment() {
             viewLifecycleOwner.repeatOnLifecycle(
                 Lifecycle.State.STARTED
             ) {
-
-                /**
-                 * Luồng 1:
-                 * Theo dõi danh sách từ của chủ đề.
-                 */
                 launch {
                     database
                         .vocabularyDao()
                         .observeWordsByTopic(topicId)
                         .collectLatest { vocabularies ->
-
-                            vocabularyAdapter.submitList(
-                                vocabularies
+                            allTopicVocabularies = vocabularies
+                            binding.tvWordCount.text = "${vocabularies.size} từ"
+                            filterVocabulary(
+                                binding.edtSearchVocabulary.text
+                                    ?.toString()
+                                    .orEmpty()
                             )
-
-                            binding.tvWordCount.text =
-                                "${vocabularies.size} từ"
-
-                            val isEmpty =
-                                vocabularies.isEmpty()
-
-                            binding.tvEmpty.isVisible =
-                                isEmpty
-
-                            binding.rvVocabulary.isVisible =
-                                !isEmpty
                         }
                 }
-
-                /**
-                 * Luồng 2:
-                 * Theo dõi ID các từ đã lưu để đổi icon.
-                 */
                 if (userId > 0) {
                     launch {
                         database
                             .savedVocabularyDao()
-                            .observeSavedVocabularyIds(
-                                userId
-                            )
+                            .observeSavedVocabularyIds(userId)
                             .collectLatest { savedIds ->
-
                                 vocabularyAdapter
-                                    .setSavedVocabularyIds(
-                                        savedIds.toSet()
-                                    )
+                                    .setSavedVocabularyIds(savedIds.toSet())
                             }
                     }
                 }
