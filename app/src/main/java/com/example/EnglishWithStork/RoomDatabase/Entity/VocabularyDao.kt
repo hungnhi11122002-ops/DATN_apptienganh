@@ -63,6 +63,14 @@ interface VocabularyDao {
         keyword: String
     ): Flow<List<VocabularyEntity>>
 
+    @Query("""
+    SELECT *
+    FROM vocabularies
+    WHERE english = :word COLLATE NOCASE
+    LIMIT 1
+""")
+    suspend fun findExactEnglishWord(word: String): VocabularyEntity?
+
     @Query(
         """
     SELECT *
