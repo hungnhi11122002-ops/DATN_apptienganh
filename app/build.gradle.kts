@@ -58,6 +58,9 @@ dependencies {
     ksp("androidx.room:room-compiler:$roomVersion")
     implementation("io.coil-kt.coil3:coil:3.3.0")
     implementation("io.coil-kt.coil3:coil-network-okhttp:3.3.0")
+    implementation("com.squareup.retrofit2:retrofit:2.12.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.12.0")
+    implementation("com.google.mlkit:translate:17.0.3")
 }
 
 ksp {

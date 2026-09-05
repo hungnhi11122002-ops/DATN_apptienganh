@@ -23,6 +23,9 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import com.example.EnglishWithStork.Models.DictionaryLookupResult
+import com.example.EnglishWithStork.Models.DictionaryLookupState
+import com.example.EnglishWithStork.repository.DictionaryRepository
 
 class DictionaryFragment : Fragment() {
     private var _binding: FragmentDictionaryBinding? = null
@@ -31,7 +34,9 @@ class DictionaryFragment : Fragment() {
     private lateinit var database: AppDatabase
     private lateinit var ttsManager: EnglishTtsManager
     private var userId: Int = -1
-    private var currentVocabulary: VocabularyEntity? = null
+    private lateinit var dictionaryRepository: DictionaryRepository
+
+    private var currentResult: DictionaryLookupResult? = null
     private var savedVocabularyIds: Set<Int> = emptySet()
     private var searchJob: Job? = null
 
@@ -65,6 +70,11 @@ class DictionaryFragment : Fragment() {
         database =
             AppDatabase.getDatabase(
                 requireContext()
+            )
+
+        dictionaryRepository =
+            DictionaryRepository(
+                database.vocabularyDao()
             )
 
         userId =
@@ -181,7 +191,8 @@ class DictionaryFragment : Fragment() {
 
                 searchVocabulary(
                     keyword = keyword,
-                    useDelay = true
+                    useDelay = true,
+                    allowOnline = false
                 )
             }
     }
@@ -216,7 +227,8 @@ class DictionaryFragment : Fragment() {
 
         searchVocabulary(
             keyword = keyword,
-            useDelay = false
+            useDelay = false,
+            allowOnline = true
         )
     }
 
@@ -227,23 +239,31 @@ class DictionaryFragment : Fragment() {
      * Tất cả thao tác tìm kiếm đều đi qua hàm này.
      */
     private fun searchVocabulary(
+
         keyword: String,
-        useDelay: Boolean
+
+        useDelay: Boolean,
+
+        allowOnline: Boolean
+
     ) {
 
-        /**
-         * Hủy lần search trước nếu user nhập tiếp.
-         */
         searchJob?.cancel()
 
 
-        /**
-         * User xóa hết nội dung tìm kiếm.
-         */
         if (keyword.isBlank()) {
-            currentVocabulary = null
-            binding.layoutResult.isVisible = false
-            binding.tvResultTitle.text = "Kết quả tra cứu"
+
+            currentResult = null
+
+            binding.layoutResult.isVisible =
+                false
+
+            binding.btnSave.isVisible =
+                false
+
+            binding.tvResultTitle.text =
+                "Kết quả tra cứu"
+
             return
         }
 
@@ -253,34 +273,57 @@ class DictionaryFragment : Fragment() {
                 .lifecycleScope
                 .launch {
 
-                    /**
-                     * Search khi đang gõ:
-                     * đợi 300ms.
-                     *
-                     * Search bằng nút:
-                     * tìm ngay.
-                     */
-                    if (useDelay)
-                    {
+                    if (useDelay) {
+
                         delay(300)
                     }
 
-                    /**
-                     * Tìm chính xác từ tiếng Anh
-                     * trong Room Database.
-                     */
-                    val vocabulary =
-                        database
-                            .vocabularyDao()
-                            .findExactEnglishWord(keyword)
 
-                    if (vocabulary != null)
-                    {
-                        showVocabulary(vocabulary)
-                    }
-                    else
-                    {
-                        showNotFound(keyword)
+                    when (
+                        val state =
+                            dictionaryRepository
+                                .lookup(
+                                    keyword = keyword,
+                                    allowOnline = allowOnline
+                                )
+                    ) {
+
+
+                        is DictionaryLookupState.Found -> {
+
+                            showDictionaryResult(
+                                state.result
+                            )
+                        }
+
+
+                        DictionaryLookupState.OfflineMiss -> {
+
+                            currentResult = null
+
+                            binding.layoutResult.isVisible =
+                                false
+
+                            binding.btnSave.isVisible =
+                                false
+
+                            binding.tvResultTitle.text =
+                                "Không có trong dữ liệu offline. Nhấn tìm kiếm để tra online."
+                        }
+
+
+                        DictionaryLookupState.NotFound -> {
+
+                            showNotFound(keyword)
+                        }
+
+
+                        is DictionaryLookupState.Error -> {
+
+                            showSearchError(
+                                state.message
+                            )
+                        }
                     }
                 }
     }
@@ -290,51 +333,95 @@ class DictionaryFragment : Fragment() {
      *
      * Chỉ giữ MỘT showVocabulary().
      */
-    private fun showVocabulary(
-        vocabulary: VocabularyEntity
+    private fun showDictionaryResult(
+        result: DictionaryLookupResult
     ) {
-        /**
-         * Lưu từ hiện tại để:
-         *
-         * - phát âm
-         * - lưu vào sổ tay
-         */
-        currentVocabulary = vocabulary
-        binding.tvResultTitle.text = "Kết quả tra cứu"
-        binding.layoutResult.isVisible = true
 
-        /**
-         * English.
-         */
-        binding.tvWord.text = vocabulary.english
+        currentResult = result
 
-        /**
-         * Phiên âm.
-         */
-        binding.tvPhonetic.text = vocabulary.phonetic.orEmpty()
-        binding.tvPhonetic.isVisible = !vocabulary.phonetic.isNullOrBlank()
 
-        /**
-         * Loại từ.
-         */
-        binding.tvPartOfSpeech.text = vocabulary.wordClass.orEmpty()
-        binding.tvPartOfSpeech.isVisible = !vocabulary.wordClass.isNullOrBlank()
-        /**
-         * Nghĩa tiếng Việt.
-         */
-        binding.tvMeaning.text = vocabulary.vietnamese
-        /**
-         * VocabularyEntity hiện tại
-         * chưa có trường definition.
-         */
-        binding.tvDefinition.text = "Chưa có định nghĩa tiếng Anh trong dữ liệu offline."
-        /**
-         * Ghép ví dụ tiếng Anh
-         * và ví dụ tiếng Việt.
-         */
+        binding.tvResultTitle.text =
+            "Kết quả tra cứu"
+
+
+        binding.layoutResult.isVisible =
+            true
+
+
+        // =============================
+        // English
+        // =============================
+
+        binding.tvWord.text =
+            result.english
+
+
+        // =============================
+        // Phonetic
+        // =============================
+
+        binding.tvPhonetic.text =
+            result.phonetic.orEmpty()
+
+        binding.tvPhonetic.isVisible =
+            !result.phonetic.isNullOrBlank()
+
+
+        // =============================
+        // Part of speech
+        // =============================
+
+        binding.tvPartOfSpeech.text =
+            result.wordClass.orEmpty()
+
+        binding.tvPartOfSpeech.isVisible =
+            !result.wordClass.isNullOrBlank()
+
+
+        // =============================
+        // Vietnamese meaning
+        // =============================
+
+        binding.tvMeaning.text =
+            result
+                .vietnamese
+                ?.takeIf {
+                    it.isNotBlank()
+                }
+                ?: "Chưa có nghĩa tiếng Việt."
+
+
+        // =============================
+        // English definition
+        // =============================
+
+        binding.tvDefinition.text =
+            result
+                .definition
+                ?.takeIf {
+                    it.isNotBlank()
+                }
+                ?: if (
+                    result.localVocabularyId != null
+                ) {
+
+                    "Chưa có định nghĩa tiếng Anh trong dữ liệu offline."
+
+                } else {
+
+                    "Chưa có định nghĩa tiếng Anh."
+                }
+
+
+        // =============================
+        // Example
+        // =============================
+
         val exampleText =
             buildString {
-                vocabulary.exampleEnglish
+
+                result
+                    .exampleEnglish
                     ?.takeIf {
                         it.isNotBlank()
                     }
@@ -342,29 +429,49 @@ class DictionaryFragment : Fragment() {
                         append(it)
                     }
 
-                vocabulary.exampleVietnamese
+
+                result
+                    .exampleVietnamese
                     ?.takeIf {
                         it.isNotBlank()
                     }
                     ?.let {
-                        if (isNotEmpty())
-                        {
+
+                        if (isNotEmpty()) {
+
                             append("\n")
                         }
+
                         append(it)
                     }
             }
 
+
         binding.tvExample.text =
-            if (exampleText.isBlank())
-                {"Chưa có câu ví dụ."}
-            else
-                {exampleText }
+            if (exampleText.isBlank()) {
+
+                "Chưa có câu ví dụ."
+
+            } else {
+
+                exampleText
+            }
+
+
         /**
-         * Kiểm tra từ này đã được lưu
-         * vào sổ tay chưa.
+         * Chỉ từ nằm trong Room mới có thể
+         * sử dụng cấu trúc SavedVocabulary hiện tại.
          */
-        updateSaveButton()
+        if (result.localVocabularyId != null) {
+
+            binding.btnSave.isVisible = true
+
+            updateSaveButton()
+
+        } else {
+
+            binding.btnSave.isVisible = false
+        }
     }
 
     /**
@@ -373,18 +480,53 @@ class DictionaryFragment : Fragment() {
     private fun showNotFound(
         keyword: String
     ) {
-        currentVocabulary = null
-        binding.layoutResult.isVisible = false
-        binding.tvResultTitle.text = "Không tìm thấy từ \"$keyword\""
+
+        currentResult = null
+
+        binding.layoutResult.isVisible =
+            false
+
+        binding.btnSave.isVisible =
+            false
+
+        binding.tvResultTitle.text =
+            "Không tìm thấy từ \"$keyword\""
     }
+
+    private fun showSearchError(
+        message: String
+    ) {
+
+        currentResult = null
+
+        binding.layoutResult.isVisible =
+            false
+
+        binding.btnSave.isVisible =
+            false
+
+        binding.tvResultTitle.text =
+            message
+    }
+
     /**
      * Phát âm từ đang hiển thị.
      */
     private fun speakCurrentWord() {
-        val vocabulary = currentVocabulary ?: return
-        val success = ttsManager.speak(vocabulary.english)
+
+        val result =
+            currentResult
+                ?: return
+
+
+        val success =
+            ttsManager.speak(
+                result.english
+            )
+
 
         if (!success) {
+
             Toast.makeText(
                 requireContext(),
                 "Máy đọc chưa sẵn sàng hoặc chưa hỗ trợ tiếng Anh",
@@ -397,46 +539,84 @@ class DictionaryFragment : Fragment() {
      * Lưu / xóa từ khỏi sổ tay.
      */
     private fun toggleSavedVocabulary() {
-        val vocabulary = currentVocabulary ?: return
-        if (userId <= 0) {
-            Toast.makeText(requireContext(),"Không tìm thấy tài khoản đang đăng nhập",Toast.LENGTH_SHORT
+
+        val vocabularyId =
+            currentResult
+                ?.localVocabularyId
+
+
+        if (vocabularyId == null) {
+
+            Toast.makeText(
+                requireContext(),
+                "Từ online hiện chưa hỗ trợ lưu vào sổ tay",
+                Toast.LENGTH_SHORT
             ).show()
+
             return
         }
 
-        val isSaved = savedVocabularyIds.contains(vocabulary.id)
+
+        if (userId <= 0) {
+
+            Toast.makeText(
+                requireContext(),
+                "Không tìm thấy tài khoản đang đăng nhập",
+                Toast.LENGTH_SHORT
+            ).show()
+
+            return
+        }
+
+
+        val isSaved =
+            savedVocabularyIds
+                .contains(
+                    vocabularyId
+                )
+
+
         viewLifecycleOwner
             .lifecycleScope
             .launch {
+
                 if (isSaved) {
-                    /**
-                     * Từ đã lưu
-                     * -> xóa khỏi sổ tay.
-                     */
+
                     database
                         .savedVocabularyDao()
                         .deleteSavedVocabulary(
                             userId = userId,
-                            vocabularyId = vocabulary.id
+                            vocabularyId = vocabularyId
                         )
 
-                    Toast.makeText(requireContext(),"Đã xóa khỏi sổ tay",Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        requireContext(),
+                        "Đã xóa khỏi sổ tay",
+                        Toast.LENGTH_SHORT
+                    ).show()
 
                 } else {
-                    /**
-                     * Từ chưa lưu
-                     * -> thêm vào sổ tay.
-                     */
+
                     database
                         .savedVocabularyDao()
                         .insertSavedVocabulary(
+
                             SavedVocabularyEntity(
-                                userId = userId,
+
+                                userId =
+                                    userId,
+
                                 vocabularyId =
-                                    vocabulary.id
+                                    vocabularyId
                             )
                         )
-                    Toast.makeText(requireContext(),"Đã lưu vào sổ tay",Toast.LENGTH_SHORT).show()
+
+
+                    Toast.makeText(
+                        requireContext(),
+                        "Đã lưu vào sổ tay",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
     }
@@ -470,8 +650,32 @@ class DictionaryFragment : Fragment() {
      * từ hiện tại đã được lưu hay chưa.
      */
     private fun updateSaveButton() {
-        val vocabulary = currentVocabulary ?: return
-        val isSaved = savedVocabularyIds.contains(vocabulary.id)
+
+        val vocabularyId =
+            currentResult
+                ?.localVocabularyId
+
+
+        if (vocabularyId == null) {
+
+            binding.btnSave.isVisible =
+                false
+
+            return
+        }
+
+
+        binding.btnSave.isVisible =
+            true
+
+
+        val isSaved =
+            savedVocabularyIds
+                .contains(
+                    vocabularyId
+                )
+
+
         binding.btnSave.text =
             if (isSaved) {
 
@@ -484,13 +688,16 @@ class DictionaryFragment : Fragment() {
 
         binding.btnSave
             .setCompoundDrawablesRelativeWithIntrinsicBounds(
+
                 if (isSaved) {
 
                     R.drawable.ic_bookmark_24
 
                 } else {
+
                     R.drawable.ic_bookmark_border_24
                 },
+
                 0,
                 0,
                 0
