@@ -46,4 +46,27 @@ interface TopicDao {
     suspend fun countWordsByTopic(
         topicId: Int
     ): Int
+
+    @Query(
+        """
+    SELECT
+        t.id AS id,
+        t.name AS name,
+        t.image_name AS image_name,
+        COUNT(v.id) AS word_count
+    FROM topics t
+    LEFT JOIN vocabularies v
+        ON v.topic_id = t.id
+    GROUP BY
+        t.id,
+        t.name,
+        t.image_name,
+        t.sort_order
+    ORDER BY
+        t.sort_order ASC,
+        t.id ASC
+    """
+    )
+    fun observeTopicsWithWordCount():
+            Flow<List<TopicWithWordCount>>
 }
