@@ -53,6 +53,43 @@
 
     </FrameLayout>
 
+    <LinearLayout
+        android:id="@+id/layoutTestStatus"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="20dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingTop="6dp"
+        android:paddingBottom="6dp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layoutHeader">
+
+        <TextView
+            android:id="@+id/tvScore"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Điểm: 0"
+            android:textColor="@color/stork_blue_dark"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvHearts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="♥ ♥ ♥"
+            android:textColor="#E53935"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
 
     <!-- QUESTION TYPE BADGE -->
     <TextView
@@ -72,7 +109,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/layoutHeader" />
+        app:layout_constraintTop_toBottomOf="@id/layoutTestStatus" />
 
 
     <!-- NƠI HIỂN THỊ 1 TRONG 3 DẠNG BÀI -->

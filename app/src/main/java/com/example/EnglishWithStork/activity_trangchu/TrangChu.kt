@@ -1,31 +1,35 @@
 package com.example.EnglishWithStork.activity_trangchu
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.EnglishWithStork.R
+import androidx.recyclerview.widget.RecyclerView
 import com.example.EnglishWithStork.Models.Topic
 import com.example.EnglishWithStork.Models.quick_practise
+import com.example.EnglishWithStork.R
 import com.example.EnglishWithStork.UI.PractiseAdapter
 import com.example.EnglishWithStork.UI.TopicAdapter
 import com.example.EnglishWithStork.databinding.FragmentTrangChuBinding
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import android.widget.Toast
 
 class TrangChu : Fragment() {
 
     private var _binding: FragmentTrangChuBinding? = null
-    private val binding get() = _binding!!
+
+    private val binding: FragmentTrangChuBinding
+        get() = _binding!!
 
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+
         _binding = FragmentTrangChuBinding.inflate(
             inflater,
             container,
@@ -35,44 +39,65 @@ class TrangChu : Fragment() {
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+
+    override fun onViewCreated(
+        view: View,
+        savedInstanceState: Bundle?
+    ) {
+        super.onViewCreated(
+            view,
+            savedInstanceState
+        )
+
+        setupTopics()
+        setupQuickPractise()
+    }
+
+
+    // ==============================
+    // DANH SÁCH CHỦ ĐỀ TRANG CHỦ
+    // ==============================
+
+    private fun setupTopics() {
 
         val listTopic = listOf(
+
             Topic(
-                "Gia đình",
-                "25 từ",
-                R.drawable.family,
-                false,
-                2
+                topic_name = "Gia đình",
+                description = "25 từ",
+                image_description = R.drawable.family,
+                isCompleted = false,
+                topic_id = 2
             ),
+
             Topic(
-                "Nghề nghiệp",
-                "25 từ",
-                R.drawable.jobs,
-                false,
-                3
+                topic_name = "Nghề nghiệp",
+                description = "25 từ",
+                image_description = R.drawable.jobs,
+                isCompleted = false,
+                topic_id = 3
             ),
+
             Topic(
-                "Trái cây",
-                "25 từ",
-                R.drawable.fruits,
-                false,
-                10
+                topic_name = "Trái cây",
+                description = "25 từ",
+                image_description = R.drawable.fruits,
+                isCompleted = false,
+                topic_id = 10
             ),
+
             Topic(
-                "Động vật",
-                "25 từ",
-                R.drawable.animals,
-                false,
-                12
+                topic_name = "Động vật",
+                description = "25 từ",
+                image_description = R.drawable.animals,
+                isCompleted = false,
+                topic_id = 12
             )
         )
 
+
         binding.rvItemTopic.apply {
 
-            // 2: RecyclerView có 2 hàng.
-            // HORIZONTAL: cuộn từ trái sang phải.
             layoutManager = GridLayoutManager(
                 requireContext(),
                 1,
@@ -80,40 +105,85 @@ class TrangChu : Fragment() {
                 false
             )
 
-            adapter = TopicAdapter(listTopic) { selectedTopic ->
-                openVocabularyList(selectedTopic)
+            adapter = TopicAdapter(
+                listTopic
+            ) { selectedTopic ->
+
+                openVocabularyList(
+                    selectedTopic
+                )
             }
 
-            // Chỉ nên dùng khi kích thước RecyclerView không đổi theo dữ liệu.
             setHasFixedSize(true)
-        }
-
-        val listquick_practise = listOf(
-            quick_practise("Ôn tập", "Ôn tập lại từ vựng",R.drawable.ic_ontap),
-            quick_practise("Kiểm tra", "Kiểm tra kiến thức",R.drawable.ic_exam)
-        )
-        binding.rvItemLuyentap.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-        binding.rvItemLuyentap.adapter = PractiseAdapter(
-            listquick_practise
-        ) { selectedPractise ->
-
-            when (selectedPractise.name) {
-
-                "Ôn tập" -> {
-                    openReviewTopics()
-                }
-
-                "Kiểm tra" -> {
-
-                }
-            }
         }
     }
 
 
-    private fun openVocabularyList(topic: Topic) {
+    // ==============================
+    // ÔN TẬP / KIỂM TRA NHANH
+    // ==============================
 
-        // Không cho mở khi chủ đề chưa có ID hợp lệ
+    private fun setupQuickPractise() {
+
+        val listQuickPractise = listOf(
+
+            quick_practise(
+                "Ôn tập",
+                "Ôn tập lại từ vựng",
+                R.drawable.ic_ontap
+            ),
+
+            quick_practise(
+                "Kiểm tra",
+                "Kiểm tra kiến thức",
+                R.drawable.ic_exam
+            )
+        )
+
+
+        binding.rvItemLuyentap.apply {
+
+            layoutManager = LinearLayoutManager(
+                requireContext(),
+                LinearLayoutManager.HORIZONTAL,
+                false
+            )
+
+            adapter = PractiseAdapter(
+                listQuickPractise
+            ) { selectedPractise ->
+
+                when (selectedPractise.name) {
+
+                    "Ôn tập" -> {
+
+                        openPracticeTopics(
+                            OnTapFragment.MODE_REVIEW
+                        )
+                    }
+
+                    "Kiểm tra" -> {
+
+                        openPracticeTopics(
+                            OnTapFragment.MODE_TEST
+                        )
+                    }
+                }
+            }
+
+            setHasFixedSize(true)
+        }
+    }
+
+
+    // ==============================
+    // MỞ DANH SÁCH TỪ VỰNG
+    // ==============================
+
+    private fun openVocabularyList(
+        topic: Topic
+    ) {
+
         if (topic.topic_id <= 0) {
 
             Toast.makeText(
@@ -125,26 +195,50 @@ class TrangChu : Fragment() {
             return
         }
 
-        // Tạo màn hình danh sách từ và truyền ID + tên chủ đề
-        val vocabListFragment = VocabListFragment.newInstance(
-            topicId = topic.topic_id,
-            topicName = topic.topic_name
-        )
 
-        // Thay Fragment Trang chủ bằng Fragment danh sách từ
+        val vocabListFragment =
+            VocabListFragment.newInstance(
+                topicId = topic.topic_id,
+                topicName = topic.topic_name
+            )
+
+
         parentFragmentManager
             .beginTransaction()
             .replace(
                 R.id.frame_layout,
                 vocabListFragment
             )
-            .addToBackStack("vocab_list")
+            .addToBackStack(
+                "vocab_list"
+            )
             .commit()
     }
 
-    private fun openReviewTopics() {
 
-        val fragment = ReviewTopicFragment()
+    // ==============================
+    // MỞ ÔN TẬP / KIỂM TRA
+    // ==============================
+
+    private fun openPracticeTopics(
+        mode: String
+    ) {
+
+        val fragment = ReviewTopicFragment.newInstance(mode)
+
+
+        val backStackName =
+            if (
+                mode == OnTapFragment.MODE_TEST
+            ) {
+
+                "test_topics"
+
+            } else {
+
+                "review_topics"
+            }
+
 
         parentFragmentManager
             .beginTransaction()
@@ -152,14 +246,20 @@ class TrangChu : Fragment() {
                 R.id.frame_layout,
                 fragment
             )
-            .addToBackStack("review_topics")
+            .addToBackStack(
+                backStackName
+            )
             .commit()
     }
 
+
     override fun onDestroyView() {
+
         binding.rvItemTopic.adapter = null
         binding.rvItemLuyentap.adapter = null
+
         _binding = null
+
         super.onDestroyView()
     }
 }

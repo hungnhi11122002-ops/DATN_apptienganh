@@ -1,6 +1,5 @@
 package com.example.EnglishWithStork.activity_trangchu
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,7 +9,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.EnglishWithStork.Models.Topic
 import com.example.EnglishWithStork.R
 import com.example.EnglishWithStork.UI.TopicAdapter
-import com.example.EnglishWithStork.activity_dangnhap
 import com.example.EnglishWithStork.databinding.FragmentReviewTopicBinding
 
 class ReviewTopicFragment : Fragment() {
@@ -19,6 +17,18 @@ class ReviewTopicFragment : Fragment() {
 
     private val binding: FragmentReviewTopicBinding
         get() = _binding!!
+
+    // Mặc định là chế độ ôn tập
+    private var mode: String = OnTapFragment.MODE_REVIEW
+
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        mode = arguments?.getString(ARG_MODE)
+            ?: OnTapFragment.MODE_REVIEW
+    }
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -35,17 +45,41 @@ class ReviewTopicFragment : Fragment() {
         return binding.root
     }
 
+
     override fun onViewCreated(
         view: View,
         savedInstanceState: Bundle?
     ) {
         super.onViewCreated(view, savedInstanceState)
 
+        setupModeUi()
         setupTopics()
+
         binding.btnBack.setOnClickListener {
             parentFragmentManager.popBackStack()
         }
     }
+
+
+    // Thay đổi giao diện tùy theo Ôn tập hoặc Kiểm tra
+    private fun setupModeUi() {
+
+        if (mode == OnTapFragment.MODE_TEST) {
+
+            binding.tvTitle.text = "Kiểm tra"
+
+            binding.tvSubtitle.text =
+                "Chọn chủ đề bạn muốn kiểm tra"
+
+        } else {
+
+            binding.tvTitle.text = "Ôn tập"
+
+            binding.tvSubtitle.text =
+                "Chọn chủ đề bạn muốn ôn tập"
+        }
+    }
+
 
     private fun setupTopics() {
 
@@ -180,6 +214,7 @@ class ReviewTopicFragment : Fragment() {
             )
         )
 
+
         binding.rvTopic.apply {
 
             layoutManager = LinearLayoutManager(
@@ -193,14 +228,15 @@ class ReviewTopicFragment : Fragment() {
                 fullWidth = true
             ) { topic ->
 
-                openReview(topic)
+                openPractice(topic)
             }
 
             setHasFixedSize(true)
         }
     }
 
-    private fun openReview(topic: Topic) {
+
+    private fun openPractice(topic: Topic) {
 
         if (topic.topic_id <= 0) {
             return
@@ -208,8 +244,16 @@ class ReviewTopicFragment : Fragment() {
 
         val fragment = OnTapFragment.newInstance(
             topicId = topic.topic_id,
-            topicName = topic.topic_name
+            topicName = topic.topic_name,
+            mode = mode
         )
+
+        val backStackName =
+            if (mode == OnTapFragment.MODE_TEST) {
+                "test_quiz"
+            } else {
+                "review_quiz"
+            }
 
         parentFragmentManager
             .beginTransaction()
@@ -217,9 +261,10 @@ class ReviewTopicFragment : Fragment() {
                 R.id.frame_layout,
                 fragment
             )
-            .addToBackStack("review_quiz")
+            .addToBackStack(backStackName)
             .commit()
     }
+
 
     override fun onDestroyView() {
 
@@ -227,5 +272,27 @@ class ReviewTopicFragment : Fragment() {
         _binding = null
 
         super.onDestroyView()
+    }
+
+
+    companion object {
+
+        private const val ARG_MODE = "mode"
+
+        fun newInstance(
+            mode: String
+        ): ReviewTopicFragment {
+
+            return ReviewTopicFragment().apply {
+
+                arguments = Bundle().apply {
+
+                    putString(
+                        ARG_MODE,
+                        mode
+                    )
+                }
+            }
+        }
     }
 }

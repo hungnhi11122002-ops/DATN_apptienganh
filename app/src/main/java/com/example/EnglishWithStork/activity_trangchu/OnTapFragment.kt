@@ -13,7 +13,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.example.EnglishWithStork.Models.ReviewQuestion
 import com.example.EnglishWithStork.Models.ReviewQuestionType
-import com.example.EnglishWithStork.R
 import com.example.EnglishWithStork.RoomDatabase.AppDatabase
 import com.example.EnglishWithStork.RoomDatabase.Entity.VocabularyEntity
 import com.example.EnglishWithStork.databinding.FragmentOnTapBinding
@@ -39,6 +38,15 @@ class OnTapFragment : Fragment() {
 
     private var topicId: Int = 0
     private var topicName: String = ""
+    private var mode: String = MODE_REVIEW
+
+    private var score = 0
+    private var correctCount = 0
+    private var hearts = MAX_HEARTS
+    private var isTestFinished = false
+
+    private val isTestMode: Boolean
+        get() = mode == MODE_TEST
 
     private var vocabularies:
             List<VocabularyEntity> =
@@ -74,22 +82,16 @@ class OnTapFragment : Fragment() {
             LayoutReviewFillBlankBinding? =
         null
 
-
-    override fun onCreate(
-        savedInstanceState: Bundle?
-    ) {
-
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        topicId =
-            arguments?.getInt(
-                ARG_TOPIC_ID
-            ) ?: 0
+        topicId = arguments?.getInt(ARG_TOPIC_ID) ?: 0
 
-        topicName =
-            arguments?.getString(
-                ARG_TOPIC_NAME
-            ).orEmpty()
+        topicName = arguments?.getString(
+            ARG_TOPIC_NAME
+        ).orEmpty()
+
+        mode = arguments?.getString(ARG_MODE) ?: MODE_REVIEW
     }
 
 
@@ -120,16 +122,46 @@ class OnTapFragment : Fragment() {
             savedInstanceState
         )
 
-        database =
-            AppDatabase.getDatabase(
-                requireContext()
-            )
+        database = AppDatabase.getDatabase(
+            requireContext()
+        )
 
+        setupModeUi()
         setupListeners()
-
         loadVocabulary()
     }
 
+    private fun setupModeUi() {
+
+        if (isTestMode) {
+
+            binding.tvTitle.text = "Kiểm tra"
+            binding.layoutTestStatus.visibility = View.VISIBLE
+
+            updateTestStatus()
+
+        } else {
+
+            binding.tvTitle.text = "Ôn tập"
+            binding.layoutTestStatus.visibility = View.GONE
+        }
+    }
+
+    private fun updateTestStatus() {
+
+        if (!isTestMode) {
+            return
+        }
+
+        binding.tvScore.text = "Điểm: $score"
+
+        binding.tvHearts.text = when (hearts) {
+            3 -> "♥ ♥ ♥"
+            2 -> "♥ ♥ ♡"
+            1 -> "♥ ♡ ♡"
+            else -> "♡ ♡ ♡"
+        }
+    }
 
     private fun setupListeners() {
 
@@ -213,11 +245,71 @@ class OnTapFragment : Fragment() {
 
         currentIndex = 0
 
+        if (isTestMode) {
+            score = 0
+            correctCount = 0
+            hearts = MAX_HEARTS
+            isTestFinished = false
+
+            updateTestStatus()
+        }
+
         showCurrentQuestion()
+    }
+
+    private fun recordTestAnswer(
+        isCorrect: Boolean
+    ): Boolean {
+
+        // Ôn tập không tính điểm hoặc tim.
+        if (!isTestMode) {
+            return false
+        }
+
+        // Nếu bài kiểm tra đã kết thúc thì không xử lý thêm.
+        if (isTestFinished) {
+            return true
+        }
+
+        if (isCorrect) {
+            correctCount++
+        } else {
+            hearts = (hearts - 1)
+                .coerceAtLeast(0)
+        }
+
+        // Điểm luôn tính trên tổng số câu của bài kiểm tra.
+        score =
+            if (questions.isNotEmpty()) {
+                ((correctCount.toFloat() / questions.size) * 100)
+                    .toInt()
+            } else {
+                0
+            }
+
+        updateTestStatus()
+
+        // Hết tim: dừng bài kiểm tra ngay và tổng kết điểm.
+        if (hearts <= 0) {
+            isTestFinished = true
+
+            showTestFinishedDialog(
+                outOfHearts = true
+            )
+
+            return true
+        }
+
+        return false
     }
 
 
     private fun showCurrentQuestion() {
+
+        // Không được hiển thị câu mới nếu bài kiểm tra đã kết thúc.
+        if (isTestMode && isTestFinished) {
+            return
+        }
 
         if (questions.isEmpty()) {
             return
@@ -369,14 +461,28 @@ class OnTapFragment : Fragment() {
 
         isAnswered = true
 
+        // Khóa đáp án ngay sau khi user chọn.
+        radios.forEach {
+            it.isEnabled = false
+        }
+
         val selectedAnswer =
             question.options[
                 selectedIndex
             ]
 
         val isCorrect =
-            selectedAnswer ==
-                    question.answer
+            selectedAnswer == question.answer
+
+        val testEnded =
+            recordTestAnswer(isCorrect)
+
+        // Nếu vừa mất tim cuối cùng thì dialog tổng kết đã được mở.
+        // Không cho xử lý tiếp hoặc sang câu kế tiếp.
+        if (testEnded) {
+            binding.btnPrimary.isEnabled = false
+            return
+        }
 
         val childBinding =
             multipleChoiceBinding
@@ -409,14 +515,6 @@ class OnTapFragment : Fragment() {
                         "#C62828"
                     )
                 )
-        }
-
-        /*
-         * Sau khi user đã trả lời,
-         * không cho thay đổi đáp án.
-         */
-        radios.forEach {
-            it.isEnabled = false
         }
 
         binding.btnPrimary.isEnabled =
@@ -539,7 +637,7 @@ class OnTapFragment : Fragment() {
             question.prompt
 
         childBinding.tvWordCount.text =
-            "${question.wordCount} từ"
+            "Nghĩa cần điền: ${question.vocabulary.vietnamese} • ${question.wordCount} từ"
     }
 
 
@@ -549,6 +647,11 @@ class OnTapFragment : Fragment() {
     private fun handlePrimaryButton() {
 
         if (questions.isEmpty()) {
+            return
+        }
+
+        // Bài kiểm tra đã kết thúc thì không xử lý nút nữa.
+        if (isTestMode && isTestFinished) {
             return
         }
 
@@ -612,7 +715,6 @@ class OnTapFragment : Fragment() {
     private fun checkGuessWord(
         question: ReviewQuestion
     ) {
-
         val childBinding =
             guessWordBinding
                 ?: return
@@ -646,6 +748,20 @@ class OnTapFragment : Fragment() {
                         question.answer
                     )
 
+        // Đánh dấu câu hiện tại đã được trả lời trước khi chấm tim.
+        isAnswered = true
+        childBinding.edtAnswer.isEnabled = false
+        hideKeyboard()
+
+        val testEnded =
+            recordTestAnswer(isCorrect)
+
+        // Hết tim thì dừng ngay tại đây.
+        if (testEnded) {
+            binding.btnPrimary.isEnabled = false
+            return
+        }
+
         showTextResult(
             correct = isCorrect,
             correctAnswer =
@@ -653,10 +769,6 @@ class OnTapFragment : Fragment() {
             feedbackView =
                 childBinding.tvFeedback
         )
-
-        childBinding.edtAnswer
-            .isEnabled =
-            false
 
         finishChecking()
     }
@@ -699,6 +811,20 @@ class OnTapFragment : Fragment() {
                         question.answer
                     )
 
+        // Đánh dấu câu hiện tại đã được trả lời trước khi chấm tim.
+        isAnswered = true
+        childBinding.edtAnswer.isEnabled = false
+        hideKeyboard()
+
+        val testEnded =
+            recordTestAnswer(isCorrect)
+
+        // Hết tim thì dừng ngay tại đây.
+        if (testEnded) {
+            binding.btnPrimary.isEnabled = false
+            return
+        }
+
         showTextResult(
             correct = isCorrect,
             correctAnswer =
@@ -706,10 +832,6 @@ class OnTapFragment : Fragment() {
             feedbackView =
                 childBinding.tvFeedback
         )
-
-        childBinding.edtAnswer
-            .isEnabled =
-            false
 
         finishChecking()
     }
@@ -765,6 +887,11 @@ class OnTapFragment : Fragment() {
 
     private fun goToNextQuestion() {
 
+        // Phòng trường hợp nút vẫn nhận click sau khi bài kiểm tra đã kết thúc.
+        if (isTestMode && (isTestFinished || hearts <= 0)) {
+            return
+        }
+
         currentIndex++
 
         showCurrentQuestion()
@@ -772,20 +899,20 @@ class OnTapFragment : Fragment() {
 
 
     /*
-     * Không tính điểm.
-     * Không tim.
-     * Không thống kê đúng/sai.
-     *
-     * Chỉ thông báo hoàn thành.
+     * Ôn tập chỉ thông báo hoàn thành.
+     * Kiểm tra sẽ tổng kết điểm và số tim còn lại.
      */
     private fun showFinishedDialog() {
+
+        if (isTestMode) {
+            showTestFinishedDialog()
+            return
+        }
 
         MaterialAlertDialogBuilder(
             requireContext()
         )
-            .setTitle(
-                "Hoàn thành ôn tập"
-            )
+            .setTitle("Hoàn thành ôn tập")
             .setMessage(
                 "Bạn đã hoàn thành lượt ôn tập chủ đề \"$topicName\"."
             )
@@ -802,6 +929,91 @@ class OnTapFragment : Fragment() {
                 parentFragmentManager
                     .popBackStack()
             }
+            .show()
+    }
+
+
+    private fun showTestFinishedDialog(
+        outOfHearts: Boolean = false
+    ) {
+
+        if (!isTestMode) {
+            return
+        }
+
+        // Khóa hoàn toàn bài kiểm tra trước khi mở dialog.
+        isTestFinished = true
+        binding.btnPrimary.isEnabled = false
+        hideKeyboard()
+
+        val totalQuestions = questions.size
+
+        val answeredQuestions =
+            if (outOfHearts) {
+                (currentIndex + 1)
+                    .coerceAtMost(totalQuestions)
+            } else {
+                totalQuestions
+            }
+
+        val wrongCount =
+            (answeredQuestions - correctCount)
+                .coerceAtLeast(0)
+
+        val title =
+            if (outOfHearts) {
+                "Hết tim"
+            } else {
+                "Hoàn thành kiểm tra"
+            }
+
+        val message =
+            if (outOfHearts) {
+                """
+                Bạn đã hết 3 tim nên bài kiểm tra kết thúc.
+
+                Chủ đề: $topicName
+
+                Điểm: $score/100
+                Số câu đã làm: $answeredQuestions/$totalQuestions
+                Số câu đúng: $correctCount
+                Số câu sai: $wrongCount
+                Tim còn lại: 0/$MAX_HEARTS
+                """.trimIndent()
+            } else {
+                """
+                Bạn đã hoàn thành bài kiểm tra.
+
+                Chủ đề: $topicName
+
+                Điểm: $score/100
+                Số câu đã làm: $totalQuestions/$totalQuestions
+                Số câu đúng: $correctCount/$totalQuestions
+                Số câu sai: $wrongCount
+                Tim còn lại: $hearts/$MAX_HEARTS
+                """.trimIndent()
+            }
+
+        MaterialAlertDialogBuilder(
+            requireContext()
+        )
+            .setTitle(title)
+            .setMessage(message)
+            .setPositiveButton(
+                "Làm lại"
+            ) { _, _ ->
+
+                startNewSession()
+            }
+            .setNegativeButton(
+                "Chọn chủ đề"
+            ) { _, _ ->
+
+                parentFragmentManager
+                    .popBackStack()
+            }
+            // Không cho bấm ra ngoài dialog hoặc Back để quay lại bài đã hết tim.
+            .setCancelable(false)
             .show()
     }
 
@@ -863,42 +1075,30 @@ class OnTapFragment : Fragment() {
 
     companion object {
 
-        /*
-         * Ảnh mẫu của bạn là 1/10, 2/10, 3/10
-         * nên mặc định mỗi session = 10 câu.
-         */
-        private const val SESSION_SIZE =
-            10
+        private const val SESSION_SIZE = 10
 
-        private const val ARG_TOPIC_ID =
-            "topic_id"
+        const val MODE_REVIEW = "review"
+        const val MODE_TEST = "test"
 
-        private const val ARG_TOPIC_NAME =
-            "topic_name"
+        private const val MAX_HEARTS = 3
 
+        private const val ARG_TOPIC_ID = "topic_id"
+        private const val ARG_TOPIC_NAME = "topic_name"
+        private const val ARG_MODE = "mode"
 
         fun newInstance(
             topicId: Int,
-            topicName: String
+            topicName: String,
+            mode: String = MODE_REVIEW
         ): OnTapFragment {
 
-            return OnTapFragment()
-                .apply {
-
-                    arguments =
-                        Bundle().apply {
-
-                            putInt(
-                                ARG_TOPIC_ID,
-                                topicId
-                            )
-
-                            putString(
-                                ARG_TOPIC_NAME,
-                                topicName
-                            )
-                        }
+            return OnTapFragment().apply {
+                arguments = Bundle().apply {
+                    putInt(ARG_TOPIC_ID, topicId)
+                    putString(ARG_TOPIC_NAME, topicName)
+                    putString(ARG_MODE, mode)
                 }
+            }
         }
     }
 }

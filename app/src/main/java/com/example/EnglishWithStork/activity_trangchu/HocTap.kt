@@ -92,12 +92,11 @@ class HocTap : Fragment() {
 
                     "Từ điển" -> {openDictionary()}
 
-                    "Kiểm tra" -> {}
+                    "Kiểm tra" -> {openPracticeTopics(OnTapFragment.MODE_TEST)}
 
-                    "Ôn tập" -> {openReviewTopics()}
+                    "Ôn tập" -> {openPracticeTopics(OnTapFragment.MODE_REVIEW)}
                 }
             }
-
             setHasFixedSize(true)
         }
     }
@@ -270,9 +269,23 @@ class HocTap : Fragment() {
             .commit()
     }
 
-    private fun openOnTap() {
+    private fun openPracticeTopics(
+        mode: String
+    ) {
 
-        val fragment = OnTapFragment()
+        val fragment =
+            ReviewTopicFragment.newInstance(
+                mode
+            )
+
+        val backStackName =
+            if (
+                mode == OnTapFragment.MODE_TEST
+            ) {
+                "test_topics"
+            } else {
+                "review_topics"
+            }
 
         parentFragmentManager
             .beginTransaction()
@@ -280,21 +293,9 @@ class HocTap : Fragment() {
                 R.id.frame_layout,
                 fragment
             )
-            .addToBackStack("on_tap")
-            .commit()
-    }
-
-    private fun openReviewTopics() {
-
-        val fragment = ReviewTopicFragment()
-
-        parentFragmentManager
-            .beginTransaction()
-            .replace(
-                R.id.frame_layout,
-                fragment
+            .addToBackStack(
+                backStackName
             )
-            .addToBackStack("review_topics")
             .commit()
     }
 

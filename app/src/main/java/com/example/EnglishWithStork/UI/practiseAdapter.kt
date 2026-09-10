@@ -7,7 +7,7 @@ import com.example.EnglishWithStork.Models.quick_practise
 import com.example.EnglishWithStork.databinding.ItemQuickpractiseBinding
 
 class PractiseAdapter(
-    private var listPractise: List<quick_practise>,
+    private val listPractise: List<quick_practise>,
     private val onItemClick: (quick_practise) -> Unit
 ) : RecyclerView.Adapter<PractiseAdapter.PractiseViewHolder>() {
 
@@ -20,11 +20,12 @@ class PractiseAdapter(
         viewType: Int
     ): PractiseViewHolder {
 
-        val binding = ItemQuickpractiseBinding.inflate(
-            LayoutInflater.from(parent.context),
-            parent,
-            false
-        )
+        val binding =
+            ItemQuickpractiseBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
 
         return PractiseViewHolder(binding)
     }
@@ -36,11 +37,19 @@ class PractiseAdapter(
 
         val practise = listPractise[position]
 
-        holder.binding.tvPractiseName.text = practise.name
-        holder.binding.tvDescription.text = practise.description
-        holder.binding.imgPractise.setImageResource(practise.image_description)
+        holder.binding.tvPractiseName.text =
+            practise.name
 
+        holder.binding.tvDescription.text =
+            practise.description
+
+        holder.binding.imgPractise.setImageResource(
+            practise.image_description
+        )
+
+        // Xử lý khi user click vào item
         holder.binding.root.setOnClickListener {
+
             onItemClick(practise)
         }
     }
