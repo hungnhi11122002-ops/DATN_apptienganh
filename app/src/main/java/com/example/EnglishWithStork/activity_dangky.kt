@@ -132,6 +132,9 @@ class activity_dangky: AppCompatActivity() {
 
     private fun ktdky() {
 
+        val hoTen =
+            binding.edthoten.text.toString().trim()
+
         val tk =
             binding.edttk.text.toString().trim()
 
@@ -146,6 +149,16 @@ class activity_dangky: AppCompatActivity() {
 
         val cb1 =
             binding.cb1.isChecked
+
+        if (hoTen.isEmpty()) {
+
+            binding.edthoten.error =
+                "Vui lòng nhập họ và tên!"
+
+            binding.edthoten.requestFocus()
+
+            return
+        }
 
         if (tk.isEmpty()) {
             binding.edttk.error =
@@ -226,6 +239,7 @@ class activity_dangky: AppCompatActivity() {
 
         val newUser =
             Entity_user(
+                hoten = hoTen,
                 tendangnhap = tk,
                 matkhau = mk,
                 ngaysinh = ns,
@@ -321,6 +335,7 @@ class activity_dangky: AppCompatActivity() {
     }
 
     fun xoadulieu_danhap(){
+        binding.edthoten.text?.clear()
         binding.edttk.text?.clear()
         binding.edtmk.text?.clear()
         binding.edtmk2.text?.clear()

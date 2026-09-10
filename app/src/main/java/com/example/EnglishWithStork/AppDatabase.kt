@@ -22,7 +22,7 @@ import com.example.EnglishWithStork.RoomDatabase.Entity.VocabularyEntity
         VocabularyEntity::class,
         SavedVocabularyEntity::class
     ],
-    version = 3,
+    version = 4,
     exportSchema = true
 )
 abstract class AppDatabase : RoomDatabase() {
@@ -40,6 +40,8 @@ abstract class AppDatabase : RoomDatabase() {
         @Volatile
         private var INSTANCE: AppDatabase? = null
 
+
+        // Migration từ version 2 lên version 3
         private val MIGRATION_2_3 =
             object : Migration(2, 3) {
 
@@ -87,23 +89,48 @@ abstract class AppDatabase : RoomDatabase() {
                 }
             }
 
+
+        // Migration từ version 3 lên version 4
+        // Thêm cột họ và tên cho bảng user
+        private val MIGRATION_3_4 =
+            object : Migration(3, 4) {
+
+                override fun migrate(
+                    database: SupportSQLiteDatabase
+                ) {
+                    database.execSQL(
+                        """
+                        ALTER TABLE table_users
+                        ADD COLUMN hoten TEXT NOT NULL DEFAULT ''
+                        """.trimIndent()
+                    )
+                }
+            }
+
+
         fun getDatabase(
             context: Context
         ): AppDatabase {
+
             return INSTANCE ?: synchronized(this) {
 
-                val instance = Room.databaseBuilder(
-                    context.applicationContext,
-                    AppDatabase::class.java,
-                    "english_with_stork_database"
-                )
-                    .createFromAsset(
-                        "database/english_with_stork.db"
+                val instance =
+                    Room.databaseBuilder(
+                        context.applicationContext,
+                        AppDatabase::class.java,
+                        "english_with_stork_database"
                     )
-                    .addMigrations(MIGRATION_2_3)
-                    .build()
+                        .createFromAsset(
+                            "database/english_with_stork.db"
+                        )
+                        .addMigrations(
+                            MIGRATION_2_3,
+                            MIGRATION_3_4
+                        )
+                        .build()
 
                 INSTANCE = instance
+
                 instance
             }
         }
